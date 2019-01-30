@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-    <title>How to Deploy Firebase Functions App With Any Ci :: &gt;ShellGems_ — A simple, retro theme for Hugo</title>
+    <title>How to Deploy Firebase Functions App With Any CI :: &gt;ShellGems_ — All those small things</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -10,7 +10,7 @@
 Recently google published a blog article explaining a little better of how to use their firebase deploy commend for CI purposes
 I took the liberty to create a deployment script based on that post: ci-firebase-deploy-script
 and included a dockerfile based on alpine slim image."/>
-<meta name="keywords" content=""/>
+<meta name="keywords" content="nodejs firebase cloud edge python"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/" />
 
@@ -31,7 +31,7 @@ and included a dockerfile based on alpine slim image."/>
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="How to Deploy Firebase Functions App With Any Ci :: &gt;ShellGems_ — A simple, retro theme for Hugo" />
+<meta name="twitter:title" content="How to Deploy Firebase Functions App With Any CI :: &gt;ShellGems_ — All those small things" />
 <meta name="twitter:description" content="Update #1 08.10.18 – Forgot about all I just said; here is an amazing simple way When you’re working with Google product, you need to get used to Google paste.
 Recently google published a blog article explaining a little better of how to use their firebase deploy commend for CI purposes
 I took the liberty to create a deployment script based on that post: ci-firebase-deploy-script
@@ -43,13 +43,13 @@ and included a dockerfile based on alpine slim image." />
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="How to Deploy Firebase Functions App With Any Ci :: &gt;ShellGems_ — A simple, retro theme for Hugo">
+<meta property="og:title" content="How to Deploy Firebase Functions App With Any CI :: &gt;ShellGems_ — All those small things">
 <meta property="og:description" content="Update #1 08.10.18 – Forgot about all I just said; here is an amazing simple way When you’re working with Google product, you need to get used to Google paste.
 Recently google published a blog article explaining a little better of how to use their firebase deploy commend for CI purposes
 I took the liberty to create a deployment script based on that post: ci-firebase-deploy-script
 and included a dockerfile based on alpine slim image." />
 <meta property="og:url" content="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/" />
-<meta property="og:site_name" content="How to Deploy Firebase Functions App With Any Ci" />
+<meta property="og:site_name" content="How to Deploy Firebase Functions App With Any CI" />
 <meta property="og:image" content="">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
@@ -99,7 +99,7 @@ and included a dockerfile based on alpine slim image." />
   <div class="content">
     
   <div class="post">
-    <h1 class="post-title"><a href="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/">How to Deploy Firebase Functions App With Any Ci</a></h2>
+    <h1 class="post-title"><a href="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/">How to Deploy Firebase Functions App With Any CI</a></h2>
     <div class="post-meta">
       <span class="post-date">
         2018-08-19
@@ -145,36 +145,55 @@ Not to mention the fact that most of those images are bloated and the size of th
 <h2 id="prerequisites">Prerequisites:</h2>
 
 <ol>
-<li>Private Docker registery (Or just use your Docker Hub account).</li>
-<li>A dedictated Firebase account for CI(Don’t use your own! create a new one and share your project with it).</li>
+<li>Private Docker registry (Or just use your Docker Hub account).</li>
+<li>A dedicated Firebase account for CI(Don’t use your own! create a new one and share your project with it).</li>
 </ol>
 </blockquote>
 
 <ol>
 <li>We’re gonna create a new Dockerfile outside of our codebase, the main goal of this is the base for our later, authenticate firebase-cli(we’re gonna use that with Jenkins\CI of your choice).
-<code>FROM node:8-alpineENV NODE_ENV=developmentRUN npm install -g firebase-tools --productionCMD firebase login</code></li>
+<code>docker
+FROM node:8-alpineENV NODE_ENV=developmentRUN npm install -g firebase-tools --productionCMD firebase login
+</code></li>
 
 <li><p>Because we pretty much don’t need a lot, we’re gonna use the base image of alpine to save space. In case your’e using the node package of Google BigQuery, make sure to use instead <code>node:8-slim</code> and install &lsquo;make&rsquo; <code>sudo apt-get install make</code> to compile dependencies.</p></li>
 
-<li><p>Time to build a base image! let’s execute the following
-<code>docker build -f Dockerfile .</code>
-Once that done, we’re gonna run our new image and expose port 9005 in order to authenticate firebase within our local machine
-<code>docker run -t -d -p 9005:9005 --name ci-serverless &lt;new-image-hash&gt;</code>
-In this stage, Firebase will ask if you are willing to submit usage data “anonymously”(of course not!), after that,an OAuth link will be generate. Copy that to your local browser and grant premmision with your new CI user in Firebase.</p></li>
+<li><p>Time to build a base image! let’s execute the following</p>
 
-<li><p>Let’s commit our changes, tag and push to a new private docker image
-<code>docker commit &lt;new-image-hash&gt; ci-serverlessdocker tag &lt;new-image-hash&gt; &lt;registery-host&gt;/ci-serverlessdocker push &lt;registery-host&gt;/ci-serverless</code></p></li>
+<pre><code class="language-shell">docker build -f Dockerfile .
+</code></pre>
+
+<p>Once that done, we’re gonna run our new image and expose port 9005 in order to authenticate firebase within our local machine</p>
+
+<pre><code class="language-shell">docker run -t -d -p 9005:9005 --name ci-serverless &lt;new-image-hash&gt;
+</code></pre>
+
+<p>In this stage, Firebase will ask if you are willing to submit usage data “anonymously”(of course not!), after that,an OAuth link will be generate. Copy that to your local browser and grant permission with your new CI user in Firebase.</p></li>
+
+<li><p>Let’s commit our changes, tag and push to a new private docker image</p>
+
+<pre><code class="language-shell">docker commit &lt;new-image-hash&gt; ci-serverlessdocker tag &lt;new-image-hash&gt; &lt;registery-host&gt;/ci-serverlessdocker push &lt;registery-host&gt;/ci-serverless
+</code></pre></li>
 </ol>
 
-<p><b>Don’t forget to create a new job in Jenkins\Bamboo\Otherever CI for a serverless deploy and add your new image as a step for deploying your functions project.</b></p>
+<p><b>Don’t forget to create a new job in Jenkins\Bamboo\whatever CI for a serverless deploy and add your new image as a step for deploying your functions project.</b></p>
 
 <ol>
 <li>Money time! Finally we’re gonna create a Dockerfile in our functions project root
-<code>FROM your-docker-registry/our-new-image:versionFROM docker-repos-01.woger.local/ci-serverless:latestARG environmentENV NODE_ENV=$environmentCOPY . /appWORKDIR /app# Todo: Add a comment here for you guys about why it's not mendatoryRUN apt-get install make python -y &amp;&amp; \    npm install --production &amp;&amp; \    apt-get purge make python -y &amp;&amp; \    apt-get autoremove -y# EndRUN firebase use $environmentCMD firebase deploy --only functions</code>
+<code>docker
+FROM your-docker-registry/our-new-image:versionFROM docker-repos-01.woger.local/ci-serverless:latestARG environmentENV NODE_ENV=$environmentCOPY . /appWORKDIR /app# Todo: Add a comment here for you guys about why it's not mendatoryRUN apt-get install make python -y &amp;&amp; \    npm install --production &amp;&amp; \    apt-get purge make python -y &amp;&amp; \    apt-get autoremove -y# EndRUN firebase use $environmentCMD firebase deploy --only functions
+</code>
 Did you noticed something interesting there?
 We have specify what environment we want use with firebase-cli.
 If you’re happen to really like this solution and also want to implement continuous delivery in all of your environments,  just add a .firebaserc all of your available environments and their firebase project id
-<code>{  &quot;projects&quot;: {    &quot;production&quot;: &quot;production-project-id&quot;,    &quot;staging&quot;: &quot;staging-project-id&quot;  }}</code></li>
+<code>json
+{
+&quot;projects&quot;: {
+&quot;production&quot;: &quot;production-project-id&quot;,
+&quot;staging&quot;: &quot;staging-project-id&quot;
+}
+}
+</code></li>
 </ol>
 
 <p>And that’s about it!</p>

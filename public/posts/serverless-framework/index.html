@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-    <title>Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo</title>
+    <title>Serverless Framework :: &gt;ShellGems_ — All those small things</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -10,7 +10,7 @@
 Age of the serverless – stop configure and “autoscale” manually every little service.
 I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
 Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using firebase-cli or to Google functions with their cloud SDK."/>
-<meta name="keywords" content=""/>
+<meta name="keywords" content="nodejs firebase cloud edge python"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://www.evilurge.com/posts/serverless-framework/" />
 
@@ -31,7 +31,7 @@ Using a platform SDK to deploy your own code could get addictive. There is somet
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo" />
+<meta name="twitter:title" content="Serverless Framework :: &gt;ShellGems_ — All those small things" />
 <meta name="twitter:description" content="&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
 Age of the serverless – stop configure and “autoscale” manually every little service.
 I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
@@ -43,7 +43,7 @@ Using a platform SDK to deploy your own code could get addictive. There is somet
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo">
+<meta property="og:title" content="Serverless Framework :: &gt;ShellGems_ — All those small things">
 <meta property="og:description" content="&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
 Age of the serverless – stop configure and “autoscale” manually every little service.
 I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
@@ -149,7 +149,7 @@ Using a platform SDK to deploy your own code could get addictive. There is somet
 
 <h2 id="example-for-a-serverless-yml-file">Example for a serverless.yml file:</h2>
 
-<pre><code>service: demo-api
+<pre><code class="language-yaml">service: demo-api
 
 provider:
 name: google
@@ -191,7 +191,7 @@ events:
 
 <p>in firebase, it’s enough that I’m having their server if I’m not on dev env, and firebase will register all of my routes(unlike in serverless)</p>
 
-<pre><code>const express = require('express');
+<pre><code class="language-javascript">const express = require('express');
 const bodyParser = require('body-parser');
 
 const server = express();
@@ -231,7 +231,7 @@ module.exports = {api: require('firebase-functions').https.onRequest(server)};
             <span class="button previous">
               <a href="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/">
                 <span class="button__icon">←</span>
-                <span class="button__text">How to Deploy Firebase Functions App With Any Ci</span>
+                <span class="button__text">How to Deploy Firebase Functions App With Any CI</span>
               </a>
             </span>
           

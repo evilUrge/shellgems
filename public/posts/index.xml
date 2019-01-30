@@ -24,7 +24,7 @@ One of the key differences between the two is the fact that Puppeteer is purely 
     </item>
     
     <item>
-      <title>How to Deploy Firebase Functions App With Any Ci</title>
+      <title>How to Deploy Firebase Functions App With Any CI</title>
       <link>https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/</link>
       <pubDate>Sun, 19 Aug 2018 02:00:00 +0200</pubDate>
       
@@ -78,7 +78,7 @@ Basing a dream on a general feeling secure in the software industry is really ha
       <description>Update #2: It’s official – beta: As part of Google Cloud Platform, you can now use Python 3.7 runtime for Django or Flask based webapps!
 Guess that it’s not yet implemented in Firebase, but as Firebase it’s just a nicer wrapper for an existing service, then it’s purely just a matter of time.
 Thanks Google 🙋
-Updae #1: Ho-ly shit; It happened. A “compiler” for flask and Django based python apps.</description>
+Update #1: Ho-ly shit; It happened. A “compiler” for flask and Django based python apps.</description>
     </item>
     
     <item>
@@ -100,8 +100,7 @@ Well, soon enough the thrill ended when I realized that the content in my region
       <description>Ever wonder if you can use your raspberry pi/ec2/any kind of ssh instance as a proxy?
 I had the same kind of thought as part of my awesome times with my old raspberry, and I’ve found a simple method to make any ssh server into a sock proxy.
 We’ll start by running the following command:
-ssh -D 3213 -C -N user@host.com -p 22
-little argument explanation:
+ssh -D 3213 -C -N user@host.com -p 22  little argument explanation:
 D – Port the sock proxy going to bind in the localhost C – Compresses the data before sending it (pretty cool if you ask me) N- Create a ‘silent session’, where nothing is being sent nor receive(great for this usage).</description>
     </item>
     

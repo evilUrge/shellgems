@@ -11,8 +11,8 @@ paginate = 5
 [languages]
   [languages.en]
     title = ">ShellGems_"
-    subtitle = "A simple, retro theme for Hugo"
-    keywords = ""
+    subtitle = "All those small things"
+    keywords = "nodejs firebase cloud edge python"
     copyright = "Gilad Maoz"
     readMore = "Read more"
     readOtherPosts = "Read other posts"

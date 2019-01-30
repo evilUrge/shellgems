@@ -13,7 +13,9 @@ I’m talking about provisioning your machine ssh key into a new instance
 
 meaning that if I got used to just use the gcloud SDK to ssh into an instance
 
-`gcloud compute ssh my-instance --zone=europe-west1-c`
+```shell
+gcloud compute ssh my-instance --zone=europe-west1-c
+```
 
 Nowadays, I have to ssh with a root user and then add all the keys of my teammates.
 

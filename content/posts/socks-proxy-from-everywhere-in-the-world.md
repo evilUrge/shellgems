@@ -11,7 +11,9 @@ I had the same kind of thought as part of my awesome times with my old raspberry
 
 We’ll start by running the following command:
 
-`ssh -D 3213 -C -N user@host.com -p 22`
+```shell
+ssh -D 3213 -C -N user@host.com -p 22
+```
 
 *little argument explanation:*
 

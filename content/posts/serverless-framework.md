@@ -43,7 +43,7 @@ The worst part is that we need to map the handlers(which is exactly like when us
 
 Example for a serverless.yml file:
 ---
-```
+```yaml
 service: demo-api
 
 provider:
@@ -88,7 +88,7 @@ But it feels like with the need to add “plugins” and having a manifest yml f
 BTW; just for the heck of it
 
 in firebase, it’s enough that I’m having their server if I’m not on dev env, and firebase will register all of my routes(unlike in serverless)
-```
+```javascript
 const express = require('express');
 const bodyParser = require('body-parser');
 

@@ -14,7 +14,7 @@ Guess that it’s not yet implemented in Firebase, but as Firebase it’s just a
 
 Thanks Google 🙋
 
-Updae #1: Ho-ly shit; It happened.
+Update #1: Ho-ly shit; It happened.
 ==================
 
 A “compiler” for flask and Django based python apps.
@@ -38,5 +38,5 @@ Firebase is amazing. it took me time to admit it.
 ----------------
 If you’re an indie developer, you getting every cloud service you can imagine for free, and then just change it to a “Pay as you go” free once you have real traffic.
 I just wish that one day I could use Django REST framework within Firebase backend service.
-In the meantimes, at least we have [this wrapper](https://github.com/thisbejim/Pyrebase).
+In the meantime, at least we have [this wrapper](https://github.com/thisbejim/Pyrebase).
 ----------------

@@ -21,13 +21,13 @@ Being an expat in a foreign country is kind of a verdict for a lonely life.
 
 I tried to mingle around, went to shared working spaces for freelancers like me, I even participate to a Django girls meetup just to mingle around.
 
-But it wasn’t the same as working in a company as an employee.
+But it was'nt the same as working in a company as an employee.
 
 In those shared spaces it felt like an expensive library with no books (but all you can drink coffee!); I even tried to engage a conversation with other developers around me, but the conversation never evolved just because no one is working on the same project, therefore, we don’t have a shared goal.
 
 <b>Though I have to admit, In my travels around Europe, I manage to work from all sort of weird locations.</b>
 
-I worked in serval airport lounge, during flight(not recommended especially in low-cost planes!), in trains, while waiting in the bank, coffee places and even from the street (when there’s a shared wifi nearby).
+I worked in several airport lounge, during flight(not recommended especially in low-cost planes!), in trains, while waiting in the bank, coffee places and even from the street (when there’s a shared wifi nearby).
 
 Eventually, both my girlfriend and I decided to settle down in The Netherlands. And after a year and a half of working remotely, next month I’m going back to a regular employee life.
 
