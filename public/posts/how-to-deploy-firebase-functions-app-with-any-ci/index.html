@@ -38,7 +38,7 @@ I took the liberty to create a deployment script based on that post: ci-firebase
 and included a dockerfile based on alpine slim image." />
 <meta name="twitter:site" content="https://www.evilurge.com/" />
 <meta name="twitter:creator" content="" />
-<meta name="twitter:image" content="">
+<meta name="twitter:image" content="https://www.evilurge.com/img/JenkinsFirebase.png">
 
 
 <meta property="og:locale" content="en" />
@@ -50,7 +50,7 @@ I took the liberty to create a deployment script based on that post: ci-firebase
 and included a dockerfile based on alpine slim image." />
 <meta property="og:url" content="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/" />
 <meta property="og:site_name" content="How to Deploy Firebase Functions App With Any CI" />
-<meta property="og:image" content="">
+<meta property="og:image" content="https://www.evilurge.com/img/JenkinsFirebase.png">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
 
@@ -110,11 +110,11 @@ and included a dockerfile based on alpine slim image." />
     
 
     
+      <img src="https://www.evilurge.com/img/JenkinsFirebase.png" class="post-cover" />
+    
 
     <div class="post-content">
       
-
-<p><img src="https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FJenkinsFirebase.png?alt=media" alt="Post image" /></p>
 
 <h1 id="update-1-08-10-18-forgot-about-all-i-just-said-here-is-an-amazing-simple-way">Update #1 08.10.18 – Forgot about all I just said; here is an amazing simple way</h1>
 
@@ -150,15 +150,16 @@ Not to mention the fact that most of those images are bloated and the size of th
 </ol>
 </blockquote>
 
-<ol>
-<li>We’re gonna create a new Dockerfile outside of our codebase, the main goal of this is the base for our later, authenticate firebase-cli(we’re gonna use that with Jenkins\CI of your choice).
-<code>docker
-FROM node:8-alpineENV NODE_ENV=developmentRUN npm install -g firebase-tools --productionCMD firebase login
-</code></li>
+<p>1.We’re gonna create a new Dockerfile outside of our codebase, the main goal of this is the base for our later, authenticate firebase-cli(we’re gonna use that with Jenkins\CI of your choice).</p>
 
-<li><p>Because we pretty much don’t need a lot, we’re gonna use the base image of alpine to save space. In case your’e using the node package of Google BigQuery, make sure to use instead <code>node:8-slim</code> and install &lsquo;make&rsquo; <code>sudo apt-get install make</code> to compile dependencies.</p></li>
+<pre><code class="language-docker">FROM node:8-alpineENV NODE_ENV=developmentRUN npm install -g firebase-tools --productionCMD firebase login
+</code></pre>
 
-<li><p>Time to build a base image! let’s execute the following</p>
+<ul>
+<li>Because we pretty much don’t need a lot, we’re gonna use the base image of alpine to save space. In case your’e using the node package of Google BigQuery, make sure to use instead <code>node:8-slim</code> and install &lsquo;make&rsquo; <code>sudo apt-get install make</code> to compile dependencies.</li>
+</ul>
+
+<p>2.Time to build a base image! let’s execute the following</p>
 
 <pre><code class="language-shell">docker build -f Dockerfile .
 </code></pre>
@@ -168,33 +169,31 @@ FROM node:8-alpineENV NODE_ENV=developmentRUN npm install -g firebase-tools --pr
 <pre><code class="language-shell">docker run -t -d -p 9005:9005 --name ci-serverless &lt;new-image-hash&gt;
 </code></pre>
 
-<p>In this stage, Firebase will ask if you are willing to submit usage data “anonymously”(of course not!), after that,an OAuth link will be generate. Copy that to your local browser and grant permission with your new CI user in Firebase.</p></li>
+<p>In this stage, Firebase will ask if you are willing to submit usage data “anonymously”(of course not!), after that,an OAuth link will be generate. Copy that to your local browser and grant permission with your new CI user in Firebase.</p>
 
-<li><p>Let’s commit our changes, tag and push to a new private docker image</p>
+<p>3.Let’s commit our changes, tag and push to a new private docker image</p>
 
 <pre><code class="language-shell">docker commit &lt;new-image-hash&gt; ci-serverlessdocker tag &lt;new-image-hash&gt; &lt;registery-host&gt;/ci-serverlessdocker push &lt;registery-host&gt;/ci-serverless
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p><b>Don’t forget to create a new job in Jenkins\Bamboo\whatever CI for a serverless deploy and add your new image as a step for deploying your functions project.</b></p>
 
-<ol>
-<li>Money time! Finally we’re gonna create a Dockerfile in our functions project root
-<code>docker
-FROM your-docker-registry/our-new-image:versionFROM docker-repos-01.woger.local/ci-serverless:latestARG environmentENV NODE_ENV=$environmentCOPY . /appWORKDIR /app# Todo: Add a comment here for you guys about why it's not mendatoryRUN apt-get install make python -y &amp;&amp; \    npm install --production &amp;&amp; \    apt-get purge make python -y &amp;&amp; \    apt-get autoremove -y# EndRUN firebase use $environmentCMD firebase deploy --only functions
-</code>
-Did you noticed something interesting there?
+<p>4.Money time! Finally we’re gonna create a Dockerfile in our functions project root</p>
+
+<pre><code class="language-docker">FROM your-docker-registry/our-new-image:versionFROM docker-repos-01.woger.local/ci-serverless:latestARG environmentENV NODE_ENV=$environmentCOPY . /appWORKDIR /app# Todo: Add a comment here for you guys about why it's not mendatoryRUN apt-get install make python -y &amp;&amp; \    npm install --production &amp;&amp; \    apt-get purge make python -y &amp;&amp; \    apt-get autoremove -y# EndRUN firebase use $environmentCMD firebase deploy --only functions
+</code></pre>
+
+<p>Did you noticed something interesting there?
 We have specify what environment we want use with firebase-cli.
-If you’re happen to really like this solution and also want to implement continuous delivery in all of your environments,  just add a .firebaserc all of your available environments and their firebase project id
-<code>json
-{
-&quot;projects&quot;: {
-&quot;production&quot;: &quot;production-project-id&quot;,
-&quot;staging&quot;: &quot;staging-project-id&quot;
+If you’re happen to really like this solution and also want to implement continuous delivery in all of your environments,  just add a .firebaserc all of your available environments and their firebase project id</p>
+
+<pre><code class="language-json">{
+  &quot;projects&quot;: {
+    &quot;production&quot;: &quot;production-project-id&quot;,
+    &quot;staging&quot;: &quot;staging-project-id&quot;
+  }
 }
-}
-</code></li>
-</ol>
+</code></pre>
 
 <p>And that’s about it!</p>
 

@@ -41,10 +41,10 @@ and included a dockerfile based on alpine slim image.</description>
       <pubDate>Fri, 03 Aug 2018 02:00:00 +0200</pubDate>
       
       <guid>https://www.evilurge.com/posts/serverless-framework/</guid>
-      <description>&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
-Age of the serverless – stop configure and “autoscale” manually every little service.
+      <description>TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
+ Age of the serverless – stop configure and “autoscale” manually every little service.
 I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
-Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using firebase-cli or to Google functions with their cloud SDK.</description>
+Using a platform SDK to deploy your own code could get addictive.</description>
     </item>
     
     <item>

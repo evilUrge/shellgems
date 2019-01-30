@@ -1,10 +1,9 @@
 ---
 title: "Socks Proxy From Everywhere in the World"
 date: 1492300800
+cover: ff2.png
 draft: false
 ---
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2Fff2.png?alt=media)
-
 Ever wonder if you can use your raspberry pi/ec2/any kind of ssh instance as a proxy?
 
 I had the same kind of thought as part of my awesome times with my old raspberry, and I’ve found a simple method to make any ssh server into a sock proxy.

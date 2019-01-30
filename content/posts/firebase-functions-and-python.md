@@ -1,13 +1,12 @@
 ---
 title: "Firebase Functions and Python"
 date: 1496534400
+cover: pyFirebase.png
 draft: false
 ---
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FpyFirebase.png?alt=media)
-
 Update #2: It’s official – beta:
 ==================
-![screenshot](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FScreenshot-from-2018-08-21-12-01-31.png)
+![screenshot](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FScreenshot-from-2018-08-21-12-01-31.png?alt=media)
 As part of Google Cloud Platform, you can now use Python 3.7 runtime for Django or Flask based webapps!
 
 Guess that it’s not yet implemented in Firebase, but as Firebase it’s just a nicer wrapper for an existing service, then it’s purely just a matter of time.

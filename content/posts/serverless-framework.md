@@ -1,9 +1,9 @@
 ---
 title: "Serverless Framework"
 date: 1533254400
+cover: serverless.png
 draft: false
 ---
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FScreenshot-from-2018-08-03-09-46-37.png?alt=media)
 > TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
 
 Age of the serverless – stop configure and “autoscale” manually every little service.

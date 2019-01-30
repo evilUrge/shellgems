@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  deploy:
+    filters:
+      branches:
+        only:
+        - master
+    docker:
+    - image: node:8-alpine
+
+    working_directory: ~/repo
+
+    steps:
+    - run:
+        name: Set env params
+        command: export NODE_ENV=production
+
+    - checkout
+    - run: apk add make python hugo
+    - run: git submodule update --init
+    - run: cp static/favicon.png themes/terminal/static/img/favicon/red.png
+    - run: hugo
+    - run: npm install --production
+
+    # decode gpg
+    - run: echo "$GIT_CRYPT_KEY" | base64 -D > git-crypt.key
+
+    # deploy
+    - run: node deploy.js
+
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+    - deploy:
+        filters:
+          branches:
+            only: master

@@ -1,10 +1,9 @@
 ---
 title: "Goodbye Freelance Life"
 date: 1508371200
+cover: freelance.jpg
 draft: false
 ---
-
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FIMG_20160606_093949.jpg?alt=media&token=ccd656b3-86b0-443a-b8b3-0cbe05837b78)
 For years I used to work as a regular employee in startup companies(and one huge corporation R.I.P.).
 
 In Israel, there is this trend of going on long trips right after the military mandatory service. Unfortunately, I skipped that and dived right into the IT industry with believing that I’ll redeem this dream of traveling around one day. At least when I’ll feel comfortable enough in my field.

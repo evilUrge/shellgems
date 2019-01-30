@@ -1,0 +1,2 @@
+.firebaserc filter=git-crypt diff=git-crypt
+.firebase-token filter=git-crypt diff=git-crypt

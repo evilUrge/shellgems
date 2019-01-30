@@ -1,9 +1,9 @@
 ---
 title: "Puppeteer + Firebase = Test headless in the cloud"
 date: 1544486400
+cover: firepuppet.png
 draft: false
 ---
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2Ffirepuppet.png?alt=media&token=5b826916-13e9-45ca-a7be-e3fa9f24aeaf)
 A couple of months ago, I had the opportunity to experiment a bit with Google’s latest competitor for Cypress, Puppeteer.
 
 Just like Cypress, Puppeteer is a node module that includes a headless version of Chrome and a wrapper-controller (similar to Selenium’s webdriver).

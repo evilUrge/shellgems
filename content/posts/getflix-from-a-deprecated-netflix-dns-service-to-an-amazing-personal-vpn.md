@@ -1,9 +1,9 @@
 ---
 title: "Getflix From a Deprecated Netflix Dns Service to an Amazing Personal VPN"
 date: 1492387200
+cover: getflix.jpg
 draft: false
 ---
-![Post image](https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2Fgetflix.jpg?alt=media&token=46d03308-2c5f-4d87-bfcb-9d8acb62297b)
 Almost a year ago, Netflix announced a worldwide support. As a movie junky that owned a US Netflix account, it was super exciting news! no more hiding behind DNS and VPN services to fake my IP.
 
 Well, soon enough the thrill ended when I realized that the content in my region is pretty much empty. Netflix rushed to release new regions without trying to first get licenses for new content.
