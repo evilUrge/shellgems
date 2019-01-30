@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
+Age of the serverless – stop configure and “autoscale” manually every little service.
+I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
+Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using firebase-cli or to Google functions with their cloud SDK."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://www.evilurge.com/posts/serverless-framework/" />
+
+
+<link rel="stylesheet" href="https://www.evilurge.com/assets/style.css">
+
+  <link rel="stylesheet" href="https://www.evilurge.com/assets/red.css">
+
+
+
+<link rel="stylesheet" href="https://www.evilurge.com/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.evilurge.com/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://www.evilurge.com/img/favicon/red.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo" />
+<meta name="twitter:description" content="&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
+Age of the serverless – stop configure and “autoscale” manually every little service.
+I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
+Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using firebase-cli or to Google functions with their cloud SDK." />
+<meta name="twitter:site" content="https://www.evilurge.com/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Serverless Framework :: &gt;ShellGems_ — A simple, retro theme for Hugo">
+<meta property="og:description" content="&amp;gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
+Age of the serverless – stop configure and “autoscale” manually every little service.
+I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
+Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using firebase-cli or to Google functions with their cloud SDK." />
+<meta property="og:url" content="https://www.evilurge.com/posts/serverless-framework/" />
+<meta property="og:site_name" content="Serverless Framework" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2018-08-03 02:00:00 &#43;0200 CEST" />
+
+
+
+
+
+
+
+</head>
+<body class="">
+<div class="container">
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/" style="text-decoration: none;">
+  <div class="logo">
+    &gt;ShellGems_
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner">
+    
+      <li><a href="https://gist.github.com/evilUrge">snippets</a></li>
+    
+      <li><a href="/curls">ɕurls</a></li>
+    
+      <li><a href="/bash">➕.bashrc</a></li>
+    
+      <li><a href="/who-am-i">🧔 Who am I?</a></li>
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <div class="post">
+    <h1 class="post-title"><a href="https://www.evilurge.com/posts/serverless-framework/">Serverless Framework</a></h2>
+    <div class="post-meta">
+      <span class="post-date">
+        2018-08-03
+      </span>
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/shell-gems.appspot.com/o/posts%2FScreenshot-from-2018-08-03-09-46-37.png?alt=media" alt="Post image" />
+&gt; TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.</p>
+
+<p>Age of the serverless – stop configure and “autoscale” manually every little service.</p>
+
+<p>I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.</p>
+
+<p>Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using <a href="https://www.npmjs.com/package/firebase-tools">firebase-cli</a> or to Google functions with their <a href="https://cloud.google.com/sdk/">cloud SDK</a>.</p>
+
+<p>The main problem with all of these beautiful serverless services is that you’re pretty much locking yourself inside of a very specific realm.</p>
+
+<p>Imagine having a tool like <a href="https://www.terraform.io/">Terraform</a>, but instead of creating a stack based on regular instances or even docker swarm of containers having a framework that can actually deploy your serverless service regardless of what managed platform you wanna use.</p>
+
+<h1 id="introducing-the-serverless-framework">Introducing: the serverless framework</h1>
+
+<p>Recently it became a hot topic – as a great solution to deploy a service without binding yourself to just one service.</p>
+
+<p>As much as it’s a brilliant idea; the implementation so far is far from great – in fact it feels like yet another not fully baked framework that trying to solve a need by just hacking around.</p>
+
+<p>Let’s dive into what I’m referring to as an unbacked service:</p>
+
+<p>Let’s say I want to deploy my demo API to Google Functions:</p>
+
+<h2 id="unbacked-1">Unbacked #1</h2>
+
+<p>I still have to include in my project <a href="https://www.npmjs.com/package/serverless-google-cloudfunctions">serverless-google-cloudfunctions</a> npm package – what’s the point of trying to create a generic approach to all serverless services if I still have to use a specific service package.</p>
+
+<h2 id="unbacked-2">Unbacked #2</h2>
+
+<p>In the serverless.yml conf file; we have to specify the current provider and a plugin that we use for this provider</p>
+
+<p>The worst part is that we need to map the handlers(which is exactly like when using cloud sdk).</p>
+
+<h2 id="example-for-a-serverless-yml-file">Example for a serverless.yml file:</h2>
+
+<pre><code>service: demo-api
+
+provider:
+name: google
+runtime: nodejs
+project: test-evilurge
+credentials: ~/.gcloud/keyfile.json
+
+plugins:
+- serverless-google-cloudfunctions
+package:
+exclude:
+- node_modules/**
+- .gitignore
+- .git/**
+PY
+functions:
+status:
+handler: status
+events:
+  - http: path
+
+test2:
+handler: test2
+events:
+- http: path
+</code></pre>
+
+<h2 id="unbacked-3">Unbacked #3</h2>
+
+<p>Where is Firebase?</p>
+
+<p>Or better yet; where is the community?</p>
+
+<p>Of course, it’s an “opensource” service(not fully; ex having a dashboard is part of the paid subscription), meaning I can commit support for  Firebase func integration.</p>
+
+<p>But it feels like with the need to add “plugins” and having a manifest yml file that specify paths, there’s no real advantage using serverless YET.</p>
+
+<p>BTW; just for the heck of it</p>
+
+<p>in firebase, it’s enough that I’m having their server if I’m not on dev env, and firebase will register all of my routes(unlike in serverless)</p>
+
+<pre><code>const express = require('express');
+const bodyParser = require('body-parser');
+
+const server = express();
+
+
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({extended: true}));
+
+require('./conf/urls').urls(server);
+
+if (process.env.NODE_ENV === 'DEV') {
+let port = process.env.PORT || 3000;
+server.listen(port);
+console.log('Server is running on port %s', port)
+} else {
+module.exports = {api: require('firebase-functions').https.onRequest(server)};
+}
+</code></pre>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>There is a great need to have this kindof framework that will make the work of deploying to those serverless service as more strip and generic as possible.</p>
+
+<p>But as long as we gonna keep using a menifest yaml per project and having to include the service package within our build, there is no real advantage going on.</p>
+
+<p>For the time being, serverless is simply an unbacked idea; Though ill be happy to get back to it one of these days when things will get a bit more simplified.</p>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://www.evilurge.com/posts/how-to-deploy-firebase-functions-app-with-any-ci/">
+                <span class="button__icon">←</span>
+                <span class="button__text">How to Deploy Firebase Functions App With Any Ci</span>
+              </a>
+            </span>
+          
+          
+            <span class="button next">
+              <a href="https://www.evilurge.com/posts/ssh-key-provisioner/">
+                <span class="button__text">What all small cloud platforms truly missing? (and how am I gonna face that)</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">Gilad Maoz</div>
+    
+  </div>
+</footer>
+
+<script src="https://www.evilurge.com/assets/main.js"></script>
+<script src="https://www.evilurge.com/assets/prism.js"></script>
+
+  
+</div>
+
+</body>
+</html>

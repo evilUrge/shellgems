@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>What all small cloud platforms truly missing? (and how am I gonna face that) :: &gt;ShellGems_ — A simple, retro theme for Hugo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Not all of us need to use one of the a huge cloud platform as AWS and GCP. but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.
+I’m not talking about a managed services such as: RDS\Cloudsql, ELB with Autosacle, AppEngine, ECP or anything else that makes these huge providers covered so many services
+ Full disclosure: today I enrolled to DigitalOcean early access for a container orchestration based on Kubernetes."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://www.evilurge.com/posts/ssh-key-provisioner/" />
+
+
+<link rel="stylesheet" href="https://www.evilurge.com/assets/style.css">
+
+  <link rel="stylesheet" href="https://www.evilurge.com/assets/red.css">
+
+
+
+<link rel="stylesheet" href="https://www.evilurge.com/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.evilurge.com/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://www.evilurge.com/img/favicon/red.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What all small cloud platforms truly missing? (and how am I gonna face that) :: &gt;ShellGems_ — A simple, retro theme for Hugo" />
+<meta name="twitter:description" content="Not all of us need to use one of the a huge cloud platform as AWS and GCP. but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.
+I’m not talking about a managed services such as: RDS\Cloudsql, ELB with Autosacle, AppEngine, ECP or anything else that makes these huge providers covered so many services
+ Full disclosure: today I enrolled to DigitalOcean early access for a container orchestration based on Kubernetes." />
+<meta name="twitter:site" content="https://www.evilurge.com/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What all small cloud platforms truly missing? (and how am I gonna face that) :: &gt;ShellGems_ — A simple, retro theme for Hugo">
+<meta property="og:description" content="Not all of us need to use one of the a huge cloud platform as AWS and GCP. but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.
+I’m not talking about a managed services such as: RDS\Cloudsql, ELB with Autosacle, AppEngine, ECP or anything else that makes these huge providers covered so many services
+ Full disclosure: today I enrolled to DigitalOcean early access for a container orchestration based on Kubernetes." />
+<meta property="og:url" content="https://www.evilurge.com/posts/ssh-key-provisioner/" />
+<meta property="og:site_name" content="What all small cloud platforms truly missing? (and how am I gonna face that)" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2018-05-04 02:00:00 &#43;0200 CEST" />
+
+
+
+
+
+
+
+</head>
+<body class="">
+<div class="container">
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/" style="text-decoration: none;">
+  <div class="logo">
+    &gt;ShellGems_
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner">
+    
+      <li><a href="https://gist.github.com/evilUrge">snippets</a></li>
+    
+      <li><a href="/curls">ɕurls</a></li>
+    
+      <li><a href="/bash">➕.bashrc</a></li>
+    
+      <li><a href="/who-am-i">🧔 Who am I?</a></li>
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <div class="post">
+    <h1 class="post-title"><a href="https://www.evilurge.com/posts/ssh-key-provisioner/">What all small cloud platforms truly missing? (and how am I gonna face that)</a></h2>
+    <div class="post-meta">
+      <span class="post-date">
+        2018-05-04
+      </span>
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      <p>Not all of us need to use one of the a huge cloud platform as AWS and GCP.  but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.</p>
+
+<p>I’m not talking about a managed services such as: RDS\Cloudsql, ELB with Autosacle, AppEngine, ECP or anything  else that makes these huge providers covered so many services</p>
+
+<blockquote>
+<p>Full disclosure: today I enrolled to DigitalOcean early access for a container orchestration based on Kubernetes.</p>
+</blockquote>
+
+<p>I’m talking about provisioning your machine ssh key into a new instance</p>
+
+<p>meaning that if I got used to just use the gcloud SDK to ssh into an instance</p>
+
+<p><code>gcloud compute ssh my-instance --zone=europe-west1-c</code></p>
+
+<p>Nowadays, I have to ssh with a root user and then add all the keys of my teammates.</p>
+
+<p>Better yet; In some small providers such as Vultr and TransIP you actually need to do that from the browser and not to mention to modify <code>/etc/ssh/sshd_config</code> for only accept keys.</p>
+
+<p>Seem like a trivial thing to have these days, but the small player can’t really focus on developing their own CLI tools for developers.</p>
+
+<blockquote>
+<p>Theres some cool solutions out there including ansible playbook that deals with that
+See the following amazing article of “How To Manage SSH Keys Using Ansible“</p>
+</blockquote>
+
+<p>Fortunately, I had a great opportunity to work with a highly skilled DevOps that introduced me to Ansible.</p>
+
+<p>Starting to cover up all the teammate’s ssh keys</p>
+
+<p>But then I couldn’t stop wondering of what if I’ll have a built-in CLI tool to provision bulk of ssh keys and also to actually ssh into a machine via alias(meaning no need to add loads of new aliases to .zshrc).</p>
+
+<p>I started to work on some small tool that actually does exactly what Ansible covered for us, provisioning ssh keys.</p>
+
+<blockquote>
+<p><a href="https://github.com/evilUrge/ssh-key-provisioner">SSH Key provisioner</a></p>
+</blockquote>
+
+<p>At the beginning it was plain and simple, iterate on a list of hosts.</p>
+
+<p>Later it occurred to me that nobody gonna manages this hosts JSON files, So I added a build in integration with Vultr API and DigitalOcean API.</p>
+
+<p>And now I started to fancy the idea of converting this to a CLI tool that will also hook up to the user .bashrc and will create a main alias to ssh.</p>
+
+<p>Can’t say really when and what’s next, all I know is that I really love DigitalOcean and their amazing technical articles(you probably read their posts once), and of course Vultr – They pretty much responsible for the drop of cloud platform prices and increment of the micro-instances specs.</p>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://www.evilurge.com/posts/serverless-framework/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Serverless Framework</span>
+              </a>
+            </span>
+          
+          
+            <span class="button next">
+              <a href="https://www.evilurge.com/posts/goodbye-freelance-life/">
+                <span class="button__text">Goodbye Freelance Life</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">Gilad Maoz</div>
+    
+  </div>
+</footer>
+
+<script src="https://www.evilurge.com/assets/main.js"></script>
+<script src="https://www.evilurge.com/assets/prism.js"></script>
+
+  
+</div>
+
+</body>
+</html>
