@@ -3,6 +3,7 @@ title: "Firebase Functions and Python"
 date: 1496534400
 cover: pyFirebase.png
 draft: false
+description: Use python as a function engine in GCP\FB Functions.
 ---
 Update #2: It’s official – beta:
 ==================

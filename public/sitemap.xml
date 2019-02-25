@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.evilurge.com/posts/dev-tld/</loc>
+    <lastmod>2019-02-25T14:15:48+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.evilurge.com/posts/puppeteer-test-in-the-cloud/</loc>
     <lastmod>2018-12-11T01:00:00+01:00</lastmod>
   </url>
@@ -59,7 +64,7 @@
   
   <url>
     <loc>https://www.evilurge.com/</loc>
-    <lastmod>2018-12-11T01:00:00+01:00</lastmod>
+    <lastmod>2019-02-25T14:15:48+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -70,7 +75,7 @@
   
   <url>
     <loc>https://www.evilurge.com/posts/</loc>
-    <lastmod>2018-12-11T01:00:00+01:00</lastmod>
+    <lastmod>2019-02-25T14:15:48+01:00</lastmod>
     <priority>0</priority>
   </url>
   

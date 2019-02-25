@@ -3,6 +3,7 @@ title: "Socks Proxy From Everywhere in the World"
 date: 1492300800
 cover: ff2.png
 draft: false
+description: Use any ssh server as a SOCKS proxy.
 ---
 Ever wonder if you can use your raspberry pi/ec2/any kind of ssh instance as a proxy?
 

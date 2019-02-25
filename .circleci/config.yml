@@ -6,7 +6,7 @@ jobs:
         only:
         - master
     docker:
-    - image: node:8-alpine
+    - image: circleci/node
 
     working_directory: ~/repo
 
@@ -16,7 +16,7 @@ jobs:
         command: export NODE_ENV=production
 
     - checkout
-    - run: apk add make python hugo
+    - run: sudo apt-get install hugo
     - run: git submodule update --init
     - run: cp static/favicon.png themes/terminal/static/img/favicon/red.png
     - run: hugo

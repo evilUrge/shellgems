@@ -2,6 +2,7 @@
 title: "What all small cloud platforms truly missing? (and how am I gonna face that)"
 date: 1525392000
 draft: false
+description: I wrote a python based cli tool to provision ssh keys.
 ---
 Not all of us need to use one of the a huge cloud platform as AWS and GCP.  but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.
 

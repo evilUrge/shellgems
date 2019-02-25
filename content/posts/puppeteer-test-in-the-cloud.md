@@ -3,6 +3,7 @@ title: "Puppeteer + Firebase = Test headless in the cloud"
 date: 1544486400
 cover: firepuppet.png
 draft: false
+description: headless tests running in pure edge computing environment - thanks Google.
 ---
 A couple of months ago, I had the opportunity to experiment a bit with Google’s latest competitor for Cypress, Puppeteer.
 

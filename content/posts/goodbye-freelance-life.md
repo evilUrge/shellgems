@@ -3,6 +3,7 @@ title: "Goodbye Freelance Life"
 date: 1508371200
 cover: freelance.jpg
 draft: false
+description: Back to having an employer and an office from the free life of a digital nomad.
 ---
 For years I used to work as a regular employee in startup companies(and one huge corporation R.I.P.).
 

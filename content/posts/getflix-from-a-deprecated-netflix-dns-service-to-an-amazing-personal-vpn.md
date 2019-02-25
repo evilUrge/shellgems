@@ -3,6 +3,7 @@ title: "Getflix From a Deprecated Netflix Dns Service to an Amazing Personal VPN
 date: 1492387200
 cover: getflix.jpg
 draft: false
+description: awesome use-cases for an awesome VPN service - Getflix.
 ---
 Almost a year ago, Netflix announced a worldwide support. As a movie junky that owned a US Netflix account, it was super exciting news! no more hiding behind DNS and VPN services to fake my IP.
 

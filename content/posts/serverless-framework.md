@@ -3,6 +3,7 @@ title: "Serverless Framework"
 date: 1533254400
 cover: serverless.png
 draft: false
+description: Serverless framework is awesome; but not quite ready.
 ---
 > TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
 
