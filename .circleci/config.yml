@@ -18,7 +18,7 @@ jobs:
     - checkout
     # Install the latest version of Hugo
     - run: cd ~ ; sudo curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep  browser_download_url | grep Linux-64bit.deb | grep -v extended | cut -d '"' -f 4 | wget -i -
-    - run: sudo dpkg -i hugo*_Linux-64bit.deb
+    - run: cd ~ ; sudo dpkg -i hugo*_Linux-64bit.deb
     # Generate static version of the blog
     - run: hugo
     # deploy
