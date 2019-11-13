@@ -17,14 +17,8 @@ jobs:
 
     - checkout
     - run: sudo apt-get install hugo
-    - run: git submodule update --init
-    - run: cp static/favicon.png themes/terminal/static/img/favicon/red.png
     - run: hugo
     - run: npm install --production
-
-    # decode gpg
-    - run: echo "$GIT_CRYPT_KEY" | base64 -D > git-crypt.key
-
     # deploy
     - run: node deploy.js
 
