@@ -7,7 +7,7 @@ Latest build: [![CircleCI](https://circleci.com/gh/evilUrge/shellgems.svg?style=
 ## DAFUQ going on here
 My blog is based on Hugo static page generator -> hence all the posts and pages are in markdown format.
 
-####This repoestory includes:
+#### This repoestory includes:
 * All my pages (in MD).
 * A slightly modified theme ([hugo-terminal](https://github.com/panr/hugo-theme-terminal)).
 * Firebase deploy script _deploy.js_.
