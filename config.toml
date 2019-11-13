@@ -5,8 +5,9 @@ paginate = 5
 
 [params]
   contentTypeName = "posts"
-  # ["orange", "blue", "red", "green", "pink"]
   themeColor = "red"
+  fullWidthTheme = false
+  centerTheme = false
 
 [languages]
   [languages.en]
