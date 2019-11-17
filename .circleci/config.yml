@@ -16,16 +16,13 @@ jobs:
         command: export NODE_ENV=production
 
     - checkout
-    - run: sudo apt-get install hugo
-    - run: git submodule update --init
-    - run: cp static/favicon.png themes/terminal/static/img/favicon/red.png
+    # Install the latest version of Hugo
+    - run: cd ~ ; sudo curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep  browser_download_url | grep Linux-64bit.deb | grep -v extended | cut -d '"' -f 4 | wget -i -
+    - run: cd ~ ; sudo dpkg -i hugo*_Linux-64bit.deb
+    # Generate static version of the blog
     - run: hugo
-    - run: npm install --production
-
-    # decode gpg
-    - run: echo "$GIT_CRYPT_KEY" | base64 -D > git-crypt.key
-
     # deploy
+    - run: npm install --production
     - run: node deploy.js
 
 
