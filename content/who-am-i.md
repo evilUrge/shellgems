@@ -5,8 +5,17 @@ draft: false
 ---
 Gilad Maoz – גלעד מעוז
 ===
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><a href="https://www.last.fm/user/hyperman"><i class="fab fa-lastfm fa-2x"></i></a> <a href="https://www.discogs.com/user/EvilUrge/collection"><i class="fas fa-compact-disc fa-2x"></i></a> <a href="https://open.spotify.com/user/1294927558"><i class="fab fa-spotify fa-2x"></i></a>
+<link rel="stylesheet" href="https://storage.googleapis.com/shell-gems.appspot.com/muziek/muziek.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<a href="https://www.last.fm/user/hyperman"><i class="fab fa-lastfm fa-2x"></i></a> <a href="https://www.discogs.com/user/EvilUrge/collection"><i class="fas fa-compact-disc fa-2x"></i></a> <a href="https://open.spotify.com/user/1294927558"><i class="fab fa-spotify fa-2x"></i></a>
 True [music nerd](https://www.last.fm/user/hyperman) that [hunt records](https://www.discogs.com/user/EvilUrge/collection) and brag about it.
+
+<i class="icon-guitar"></i><i class="icon-acoustic"></i><i class="icon-harmonica"></i><i class="icon-clarinet"></i><i class="icon-recorder"></i><i class="icon-jazzflute"></i><i class="icon-panflute"></i><i class="icon-kalimba"></i><i class="icon-mouthharp"></i> Playing some instruments.
+
+
+
+
+
 
 Israeli born and raise, resident of the Netherlands en spreek een beetj nederlands ([♥Duolingo](https://www.duolingo.com/EvilUrge)).
 Vegan who loves to cook. Zen and PS4.
