@@ -3,7 +3,7 @@ title: "Create a Hugo base blog and auto-deploy to Firebase host"
 date: 1574513119
 cover: "circleci.png"
 draft: false
-description:
+description: 0 Code, self manage static blog that deploys itself.
 ---
 When I started this blog, just like everyone else, I've chosen Wordpress; default in the blogging world (so it seems at least).
 Wordpress is well established CMS, BUT IT'S AN OVERKILL.
