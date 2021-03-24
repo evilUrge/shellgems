@@ -16,23 +16,24 @@ True [music nerd](https://www.last.fm/user/hyperman) that [hunt records](https:/
 <i class="icon-guitar"></i><i class="icon-acoustic"></i><i class="icon-harmonica"></i><i class="icon-clarinet"></i><i class="icon-recorder"></i><i class="icon-jazzflute"></i><i class="icon-panflute"></i><i class="icon-kalimba"></i><i class="icon-mouthharp"></i> Playing some instruments.
 
 
+Israeli born and raise, resident of the Netherlands en spreek een beetj nederlands ([♥Duolingo](https://duome.eu/evilurge)).
+Vegan who loves to cook and game.
 
-
-
-
-Israeli born and raise, resident of the Netherlands en spreek een beetj nederlands ([♥Duolingo](https://www.duolingo.com/EvilUrge)).
-Vegan who loves to cook. Zen and PS4.
-
-<b>First Linux distro:</b> [Mandrake](https://en.wikipedia.org/wiki/Mandriva_Linux) 2001 with KDE(I know lame of me; but it’s before the glory days of gnome).
+<b>First Linux distro:</b> [Mandrake](https://en.wikipedia.org/wiki/Mandriva_Linux) 2001 with KDE(I know lame of me; but it was before the glory days of gnome).
 
 >Inspiration:
 ---
-* [Allen Watts](https://en.wikipedia.org/wiki/Neil_Young)
+
+* [Ayaan Hirsi Ali](https://en.wikipedia.org/wiki/Ayaan_Hirsi_Ali)
+* [Allen Watts](https://en.wikipedia.org/wiki/Alan_Watts)
+* [Sam Harris](https://en.wikipedia.org/wiki/Sam_Harris)
+* [Maajid Nawaz](https://en.wikipedia.org/wiki/Maajid_Nawaz)
+* [Bill Maher](https://en.wikipedia.org/wiki/Bill_Maher)
+* [Michael Pollan](https://en.wikipedia.org/wiki/Michael_Pollan)
+* [Paul Stamets](https://en.wikipedia.org/wiki/Paul_Stamets)
+* [George Carlin](https://en.wikipedia.org/wiki/George_Carlin)
+* [Ricky Gervais](https://en.wikipedia.org/wiki/Ricky_Gervais)
+* [Neil Young](https://en.wikipedia.org/wiki/Neil_Young)
 * [Keith Emerson](https://en.wikipedia.org/wiki/Keith_Emerson)
 * [Lou Reed](https://en.wikipedia.org/wiki/Lou_Reed)
 * [Menashe Kadishman](https://en.wikipedia.org/wiki/Menashe_Kadishman)
-* [Michael Pollan](https://en.wikipedia.org/wiki/Michael_Pollan)
-* [Neil Young](https://en.wikipedia.org/wiki/Neil_Young)
-* [Paul Stamets](https://en.wikipedia.org/wiki/Paul_Stamets)
-* [Sam Harris](https://en.wikipedia.org/wiki/Sam_Harris)
-* [Terence McKenna](https://en.wikipedia.org/wiki/Terence_McKenna)
