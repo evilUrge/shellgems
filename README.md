@@ -2,8 +2,7 @@ ShellGems_
 ---
 My personal blog + a deploy script (and pipeline) via circleCI
 
-Latest build: [![CircleCI](https://circleci.com/gh/evilUrge/shellgems.svg?style=svg)](https://circleci.com/gh/evilUrge/shellgems)
-
+Latest build: [![docssite-deploy](https://github.com/evilUrge/shellgems/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/evilUrge/shellgems/actions/workflows/deploy.yml)
 ## DAFUQ going on here
 My blog is based on Hugo static page generator -> hence all the posts and pages are in markdown format.
 

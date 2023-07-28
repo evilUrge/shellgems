@@ -7,3 +7,4 @@ firebase-debug.log*
 .firebase/
 public/
 .DS_Store
+.history/

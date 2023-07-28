@@ -7,7 +7,7 @@ draft: false
 curl   | why
 -------------  | -------------
 `docker rmi $(docker images -q) -f`  | Delete all docker images
-`$ docker rm $(docker ps -a -q) -f` | Delete all docker containers
+`docker rm $(docker ps -a -q) -f` | Delete all docker containers
 `source .env/bin/activate;export PYTHONPATH=$pwd`  | Activate current python env and set PYTHONPATH envparam to current folder
 `git branch –merged \|grep -v “\*” \| xargs -n 1 git branch -d`  | Local git branches cleaner
 `lsof -i \| grep LISTEN`  | Open ports(OR `netstat -tulpn`)
