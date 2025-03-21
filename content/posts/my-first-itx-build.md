@@ -23,27 +23,33 @@ I was locked down with Playstation since Playstation 2, therefore I got used to 
 After months of research and waiting for parts (thanks to the chip shortage), I finally assembled my dream ITX build:
 
 ### Specs
-- Case: Lian Li TU150
+- Case: Cooler Master MasterBox NR200P
 - CPU: AMD Ryzen 5 5600X
-- GPU: NVIDIA RTX 3060 Ti
+- CPU Cooler: Scythe Mugen 5 Rev. B
+- GPU: NVIDIA RTX 3070 Ti
 - RAM: 32GB Corsair Vengeance LPX
-- Storage: 1TB Samsung 970 EVO Plus NVMe
-- PSU: Corsair SF750 Platinum
+- Storage:
+ - Samsung 980 Pro 1 TB M2
+ - Crucial P2 1TB M2
+ - Crucial MX500 2 TB 2.5 SSD
+ - Crucial MX500 4 TB 2.5 SSD
+- PSU: Silverstone SFX 700 W 80+ Platinum Certified
 - Motherboard: ASUS ROG STRIX B550-I Gaming
+- Fans: Scythe
 
 ### The Experience
 
-Building in an ITX case was both challenging and rewarding. The limited space required careful cable management and component placement. The Lian Li TU150 was a great choice - it's compact but still offers good airflow and build quality.
+Building in an ITX case was both challenging and rewarding. The limited space required careful cable management and component placement. The Cooler Master MasterBox NR200P was a great choice - it's compact but still offers good airflow and build quality.
 
 The most nerve-wracking part was installing the CPU cooler. With limited space, I had to be extra careful not to damage any components. The stock AMD cooler actually fit perfectly, though I might upgrade to a low-profile aftermarket cooler in the future.
 
 ### Performance
 
-The build exceeded my expectations. It handles modern games at 1440p with ease, and the 5600X + 3060 Ti combination is perfect for my needs. The system stays surprisingly cool despite the compact form factor.
+The build exceeded my expectations. It handles modern games at 1440p with ease, and the 5600X + 3070 Ti combination is perfect for my needs. The system stays surprisingly cool despite the compact form factor.
 
 ### Modding Fallout New Vegas
 
-Now I can finally play Fallout New Vegas with all the mods I wanted! The game looks and plays like a modern title with the right mods installed. The RTX 3060 Ti handles the enhanced graphics without breaking a sweat.
+Now I can finally play Fallout New Vegas with all the mods I wanted! The game looks and plays like a modern title with the right mods installed. The RTX 3070 Ti handles the enhanced graphics without breaking a sweat.
 
 ## Tips for First-Time ITX Builders
 

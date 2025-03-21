@@ -7,13 +7,13 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}">
-
-    <!-- Preload fonts -->
-    <link rel="preload" href="{{ "fonts/Orbitron-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ "fonts/Orbitron-Bold.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ "fonts/JetBrainsMono-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 
     <!-- Custom theme color -->
     {{ if .Site.Params.themeColor }}

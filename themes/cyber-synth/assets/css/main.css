@@ -19,6 +19,7 @@
   --color-text: #e0e0ff;
   --color-text-dim: rgba(224, 224, 255, 0.7);
   --color-border: rgba(157, 78, 221, 0.3);
+  --color-article-title: #b500b7; /* Darker version of #e701e9 */
 
   /* Grid */
   --grid-gap: 2rem;
@@ -97,7 +98,7 @@ body {
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
-  grid-gap: var(--grid-gap);
+  grid-gap: 0;
 }
 
 .cyber-container {
@@ -171,13 +172,13 @@ a:hover::after {
 
 /* Header Styles */
 .cyber-header {
-  padding: var(--space-md) var(--space-lg);
-  background-color: rgba(13, 11, 30, 0.8);
-  backdrop-filter: blur(10px);
+  width: 100%;
+  background-color: var(--color-bg-alt);
   border-bottom: var(--border-width) solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 0 var(--shadow-strength) rgba(0, 0, 0, 0.5);
 }
 
 .cyber-header__inner {
@@ -190,6 +191,10 @@ a:hover::after {
 
 /* Logo */
 .cyber-logo {
+  flex-shrink: 0;
+  margin-right: auto;
+  padding: var(--space-sm) 0;
+  z-index: 101;
   position: relative;
 }
 
@@ -291,10 +296,8 @@ a:hover::after {
 @media screen and (max-width: 768px) {
   .cyber-nav__toggle-label {
     display: block;
-    position: absolute;
-    top: -50px;
-    right: 0;
-    z-index: 101;
+    position: relative;
+    z-index: 102;
     width: 40px;
     height: 40px;
     padding: 10px;
@@ -333,30 +336,33 @@ a:hover::after {
     transform: rotate(-45deg) translate(5.5px, -5.5px);
   }
 
-  .cyber-nav__menu {
+  .cyber-nav__menu-container {
     position: fixed;
     top: 0;
     right: 0;
-    flex-direction: column;
-    gap: var(--space-md);
-    background-color: var(--color-bg);
-    border-left: var(--border-width) solid var(--color-primary);
-    padding: calc(var(--space-lg) * 2) var(--space-md);
     height: 100vh;
     width: 250px;
+    background-color: var(--color-bg);
+    border-left: var(--border-width) solid var(--color-primary);
     transform: translateX(100%);
     transition: transform 0.3s ease;
     z-index: 100;
+    overflow-y: auto;
   }
 
-  .cyber-nav__toggle:checked ~ .cyber-nav__menu {
+  .cyber-nav__menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: calc(var(--space-lg) * 2) var(--space-md);
+  }
+
+  .cyber-nav__toggle:checked ~ .cyber-nav__menu-container {
     transform: translateX(0);
   }
 
   .cyber-nav__link {
-    display: block;
-    width: 100%;
-    text-align: left;
+    font-size: 1.2rem;
   }
 }
 
@@ -410,7 +416,6 @@ a:hover::after {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-lg);
-  margin: var(--space-lg) 0;
 }
 
 /* Post Card */
@@ -421,6 +426,8 @@ a:hover::after {
   overflow: hidden;
   transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
   position: relative;
+  height: 100%; /* Ensure full height */
+  display: flex; /* Use flexbox for layout */
 }
 
 .cyber-post-card:hover {
@@ -447,11 +454,19 @@ a:hover::after {
 
 .cyber-post-card__inner {
   padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
 }
 
 .cyber-post-card__title {
   font-size: 1.25rem;
   margin-bottom: var(--space-sm);
+}
+
+.cyber-post-card__title a {
+  color: var(--color-article-title);
 }
 
 .cyber-post-card__meta {
@@ -495,6 +510,11 @@ a:hover::after {
 .cyber-post-card__summary {
   margin-bottom: var(--space-md);
   font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.cyber-post-card__footer {
+  margin-top: auto;
 }
 
 /* Button Styles */
@@ -655,10 +675,11 @@ a:hover::after {
 
 /* Footer */
 .cyber-footer {
-  background-color: rgba(13, 11, 30, 0.8);
+  width: 100%;
+  background-color: var(--color-bg-alt);
   border-top: var(--border-width) solid var(--color-border);
-  padding: var(--space-md) var(--space-lg);
-  backdrop-filter: blur(10px);
+  padding: var(--space-md) 0;
+  margin-top: auto;
 }
 
 .cyber-footer__inner {
@@ -789,9 +810,10 @@ a:hover::after {
   }
 
   .cyber-header__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-md);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-md);
   }
 
   .cyber-article__meta,

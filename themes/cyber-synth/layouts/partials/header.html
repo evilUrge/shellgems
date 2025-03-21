@@ -12,14 +12,16 @@
             <span class="cyber-nav__icon"></span>
         </label>
 
-        <ul class="cyber-nav__menu">
-            {{ range .Site.Menus.main }}
-            <li class="cyber-nav__item">
-                <a href="{{ .URL }}" class="cyber-nav__link">
-                    <span class="cyber-nav__text">{{ .Name }}</span>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
+        <div class="cyber-nav__menu-container">
+            <ul class="cyber-nav__menu">
+                {{ range $index, $element := .Site.Menus.main }}
+                <li class="cyber-nav__item" style="--item-index: {{ $index }}">
+                    <a href="{{ .URL }}" class="cyber-nav__link">
+                        <span class="cyber-nav__text">{{ .Name }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
     </nav>
 </div>
