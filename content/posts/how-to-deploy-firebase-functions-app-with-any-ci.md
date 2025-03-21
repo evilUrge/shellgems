@@ -1,10 +1,11 @@
 ---
 title: "How to Deploy Firebase Functions App With Any CI"
 date: 1534636800
-cover: "JenkinsFirebase.png"
 draft: false
 description: How to use your CI and deploy to Firebase.
 ---
+
+![RemoteConf](/img/JenkinsFirebase.png)
 Update #1 08.10.18 – Forgot about all I just said; here is an amazing simple way
 ===
 When you’re working with Google product, you need to get used to Google paste.

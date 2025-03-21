@@ -1,46 +1,54 @@
 ---
-title: "What all small cloud platforms truly missing? (and how am I gonna face that)"
-date: 1525392000
+title: "SSH Key Provisioner"
+date: 1533254400
 draft: false
-description: I wrote a python based cli tool to provision ssh keys.
+description: "A Python CLI tool to provision SSH keys to your servers"
+tags: ["Python", "SSH", "CLI", "automation", "security"]
+categories: ["Development"]
 ---
-Not all of us need to use one of the a huge cloud platform as AWS and GCP.  but recently after working on a migration project that required me to transfer everything to DigitalOcean, I noticed something that is truly missing.
 
-I’m not talking about a managed services such as: RDS\Cloudsql, ELB with Autosacle, AppEngine, ECP or anything  else that makes these huge providers covered so many services
+![SSH Key Provisioner](/img/sshkey.png)
 
-> Full disclosure: today I enrolled to DigitalOcean early access for a container orchestration based on Kubernetes.
+> TLDR(אמ;לק) – A Python CLI tool to provision SSH keys to your servers
 
-I’m talking about provisioning your machine ssh key into a new instance
+I've been working on a new project lately, a Python CLI tool that helps you provision SSH keys to your servers. The idea came from a need to manage multiple SSH keys across different servers, and I wanted to make it easier to do so.
 
-meaning that if I got used to just use the gcloud SDK to ssh into an instance
+The tool is called `ssh-key-provisioner` and it's available on GitHub. Here's what it does:
 
-```shell
-gcloud compute ssh my-instance --zone=europe-west1-c
+1. Reads your SSH keys from a specified directory
+2. Connects to your servers using SSH
+3. Adds your public keys to the authorized_keys file
+4. Supports multiple servers and multiple keys
+
+Here's how to use it:
+
+```bash
+# Install the tool
+pip install ssh-key-provisioner
+
+# Run the tool
+ssh-key-provisioner --keys-dir ~/.ssh --servers server1.example.com server2.example.com
 ```
 
-Nowadays, I have to ssh with a root user and then add all the keys of my teammates.
+The tool will:
+1. Read all your public keys from the specified directory
+2. Connect to each server
+3. Add your keys to the authorized_keys file
+4. Show you the progress and any errors that occur
 
-Better yet; In some small providers such as Vultr and TransIP you actually need to do that from the browser and not to mention to modify `/etc/ssh/sshd_config` for only accept keys.
+You can also specify a single key to provision:
 
-Seem like a trivial thing to have these days, but the small player can’t really focus on developing their own CLI tools for developers.
+```bash
+ssh-key-provisioner --key ~/.ssh/id_rsa.pub --servers server1.example.com
+```
 
-> Theres some cool solutions out there including ansible playbook that deals with that
-See the following amazing article of “How To Manage SSH Keys Using Ansible“
+The tool is still in development, but it's already functional. I'm working on adding more features like:
 
-Fortunately, I had a great opportunity to work with a highly skilled DevOps that introduced me to Ansible.
+- Support for different SSH key types
+- Backup of existing authorized_keys file
+- Support for different SSH ports
+- Support for different SSH users
 
-Starting to cover up all the teammate’s ssh keys
+You can find the source code on GitHub: [ssh-key-provisioner](https://github.com/evilurge/ssh-key-provisioner)
 
-But then I couldn’t stop wondering of what if I’ll have a built-in CLI tool to provision bulk of ssh keys and also to actually ssh into a machine via alias(meaning no need to add loads of new aliases to .zshrc).
-
-I started to work on some small tool that actually does exactly what Ansible covered for us, provisioning ssh keys.
-
-> [SSH Key provisioner](https://github.com/evilUrge/ssh-key-provisioner)
-
-At the beginning it was plain and simple, iterate on a list of hosts.
-
-Later it occurred to me that nobody gonna manages this hosts JSON files, So I added a build in integration with Vultr API and DigitalOcean API.
-
-And now I started to fancy the idea of converting this to a CLI tool that will also hook up to the user .bashrc and will create a main alias to ssh.
-
-Can’t say really when and what’s next, all I know is that I really love DigitalOcean and their amazing technical articles(you probably read their posts once), and of course Vultr – They pretty much responsible for the drop of cloud platform prices and increment of the micro-instances specs.
+Let me know if you have any questions or suggestions!

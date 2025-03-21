@@ -13,10 +13,7 @@ Gilad Maoz – גלעד מעוז
 
 True [music nerd](https://www.last.fm/user/hyperman) that [hunt records](https://www.discogs.com/user/EvilUrge/collection) and brag about it.
 
-<i class="icon-guitar"></i><i class="icon-acoustic"></i><i class="icon-harmonica"></i><i class="icon-clarinet"></i><i class="icon-recorder"></i><i class="icon-jazzflute"></i><i class="icon-panflute"></i><i class="icon-kalimba"></i><i class="icon-mouthharp"></i> Playing some instruments.
-
-
-Israeli born and raise, een Nederlander die maar niet kan stoppen met klagen en alles in [mijn journaal](https://ik.evilurge.com/) heeft opgetekend.
+Israeli born and raise, een Nederlander die maar niet kan stoppen met klagen.
 Vegan who loves to cook and game.
 
 <b>First Linux distro:</b> [Mandrake](https://en.wikipedia.org/wiki/Mandriva_Linux) 2001 with KDE(I know lame of me; but it was before the glory days of gnome).

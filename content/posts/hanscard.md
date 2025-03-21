@@ -5,7 +5,6 @@ author: "EvilUrge"
 description: "Introducing HansCard: An innovative language learning application combining spaced repetition with real-world sentences"
 tags: ["language learning", "React", "TypeScript", "Supabase", "open source"]
 categories: ["Projects"]
-image: "hanscard.png"
 ---
 
 ![HansCard Banner](/img/hanscard.png)

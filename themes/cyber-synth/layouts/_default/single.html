@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="cyber-container">
+    <article class="cyber-article">
+        <header class="cyber-article__header">
+            <h1 class="cyber-article__title">{{ .Title }}</h1>
+
+            <div class="cyber-article__meta">
+                <time class="cyber-article__date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                </time>
+
+                {{ if .Params.tags }}
+                <div class="cyber-article__tags">
+                    {{ range .Params.tags }}
+                    <a href="{{ (printf "tags/%s/" (urlize .)) | relURL }}" class="cyber-tag">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </header>
+
+        {{ if .Params.cover }}
+        <div class="cyber-article__cover">
+            <img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="cyber-article__image">
+        </div>
+        {{ end }}
+
+        <div class="cyber-article__content">
+            {{ .Content }}
+        </div>
+
+        <footer class="cyber-article__footer">
+            {{ if .Site.Params.readOtherPosts }}
+            <div class="cyber-article__nav">
+                {{ if .PrevInSection }}
+                <a href="{{ .PrevInSection.Permalink }}" class="cyber-button cyber-button--prev">
+                    <span class="cyber-button__icon">←</span>
+                    <span class="cyber-button__text">{{ .PrevInSection.Title }}</span>
+                </a>
+                {{ end }}
+
+                {{ if .NextInSection }}
+                <a href="{{ .NextInSection.Permalink }}" class="cyber-button cyber-button--next">
+                    <span class="cyber-button__text">{{ .NextInSection.Title }}</span>
+                    <span class="cyber-button__icon">→</span>
+                </a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </footer>
+    </article>
+</div>
+{{ end }}

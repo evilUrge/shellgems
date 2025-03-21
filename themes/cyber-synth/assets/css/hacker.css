@@ -1,0 +1,120 @@
+/*
+ * Cyber Synth Theme - Hacker Mode
+ * Adds retro terminal and gaming-inspired styling
+ */
+
+/* Custom cursor */
+body {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><polygon points="8,0 16,8 8,16 0,8" fill="%239d4edd" stroke="%23000000" stroke-width="1"/></svg>'), auto;
+}
+
+/* Pixelated font for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', 'Orbitron', sans-serif;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+/* Game-style buttons */
+.cyber-button {
+  font-family: 'Press Start 2P', 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  image-rendering: pixelated;
+  border-style: outset;
+  border-width: 4px;
+  box-shadow: 2px 2px 0 #000;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.cyber-button:hover {
+  border-style: inset;
+  transform: scale(0.98);
+}
+
+/* Command line-style input fields */
+input, textarea {
+  background-color: #000;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  padding: 0.5rem;
+  caret-color: var(--color-accent);
+}
+
+/* Matrix-like scan effect */
+.scan-lines {
+  background: linear-gradient(
+    to bottom,
+    transparent var(--scan-line-height),
+    rgba(0, 255, 0, var(--scan-line-opacity)) var(--scan-line-height),
+    rgba(0, 255, 0, var(--scan-line-opacity)) calc(var(--scan-line-height) * 2),
+    transparent calc(var(--scan-line-height) * 2)
+  );
+  opacity: 0.2;
+}
+
+/* CRT flicker effect */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.9; }
+  10% { opacity: 0.97; }
+  15% { opacity: 0.92; }
+  20% { opacity: 0.97; }
+  50% { opacity: 0.97; }
+  60% { opacity: 0.93; }
+  70% { opacity: 0.97; }
+  75% { opacity: 0.93; }
+  100% { opacity: 0.97; }
+}
+
+body {
+  animation: flicker 5s infinite;
+}
+
+/* Console-like code blocks */
+pre {
+  border: 1px solid var(--color-primary);
+  border-radius: 0;
+  background-color: #000 !important;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+
+pre code {
+  color: var(--color-primary) !important;
+}
+
+pre::before {
+  content: '> ';
+  color: var(--color-accent);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Pixelated borders */
+.cyber-post-card, .cyber-article {
+  position: relative;
+  border: none;
+  background-color: var(--color-bg-alt);
+}
+
+.cyber-post-card::after, .cyber-article::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--color-primary) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-primary) 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: 0 0;
+  border: 2px solid var(--color-primary);
+  box-sizing: border-box;
+  opacity: 0.3;
+}

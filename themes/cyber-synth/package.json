@@ -1,0 +1,23 @@
+{
+  "name": "cyber-synth",
+  "version": "1.0.0",
+  "description": "A futuristic, cyberpunk-inspired Hugo theme with retrowave aesthetics and modern AI elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hugo",
+    "hugo-theme",
+    "cyberpunk",
+    "retrowave",
+    "tech"
+  ],
+  "author": "Theme Creator",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0"
+  }
+}

@@ -1,23 +1,25 @@
 baseurl = "https://www.evilurge.com/"
 languageCode = "en-us"
-theme = "terminal"
+theme = "cyber-synth"
 paginate = 5
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-      
+
 [params]
   contentTypeName = "posts"
-  themeColor = "red"
+  themeColor = "neon-purple"
+  hacker = true
   fullWidthTheme = false
-  centerTheme = false
+  centerTheme = true
+  description = "A tech blog about cloud, AI, and coding by Gilad Maoz"
 
 [languages]
   [languages.en]
     title = ">ShellGems_"
     subtitle = "All those small things"
-    keywords = "nodejs firebase cloud edge python"
+    keywords = "nodejs firebase cloud edge python ai tech gaming music"
     copyright = "Gilad Maoz"
     readMore = "Read more"
     readOtherPosts = "Read other posts"

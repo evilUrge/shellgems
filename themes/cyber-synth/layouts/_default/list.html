@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="cyber-container">
+    <h1 class="cyber-heading">{{ .Title }}</h1>
+
+    {{ if .Content }}
+    <div class="cyber-content">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    <div class="cyber-posts">
+        {{ range .Paginator.Pages }}
+        <article class="cyber-post-card">
+            <div class="cyber-post-card__inner">
+                <div class="cyber-post-card__header">
+                    <h2 class="cyber-post-card__title">
+                        <a href="{{ .Permalink }}" class="cyber-post-card__link">{{ .Title }}</a>
+                    </h2>
+
+                    <div class="cyber-post-card__meta">
+                        <time class="cyber-post-card__date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+
+                        {{ if .Params.tags }}
+                        <div class="cyber-post-card__tags">
+                            {{ range .Params.tags }}
+                            <a href="{{ (printf "tags/%s/" (urlize .)) | relURL }}" class="cyber-tag">{{ . }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+
+                {{ if .Params.cover }}
+                <div class="cyber-post-card__cover">
+                    <img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="cyber-post-card__image">
+                </div>
+                {{ end }}
+
+                <div class="cyber-post-card__summary">
+                    {{ if .Description }}
+                        {{ .Description }}
+                    {{ else }}
+                        {{ .Summary }}
+                    {{ end }}
+                </div>
+
+                <div class="cyber-post-card__footer">
+                    <a href="{{ .Permalink }}" class="cyber-button">
+                        {{ if .Site.Params.readMore }}{{ .Site.Params.readMore }}{{ else }}Read More{{ end }}
+                    </a>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    {{ partial "pagination.html" . }}
+</div>
+{{ end }}

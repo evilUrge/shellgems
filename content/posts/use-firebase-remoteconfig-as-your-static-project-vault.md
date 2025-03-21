@@ -1,10 +1,11 @@
 ---
 title: "Howto use Firebase RemoteConfig in your project as a vault"
 date: 1609408657
-cover: remoteconf.png
 draft: false
 description: A free easy alternative to Hashicorp vault which requires zero to non setup.
 ---
+
+![RemoteConf](/img/remoteconf.png)
 ```
 Disclaimer: Firebase remote config main purpose is to push new configuration for mobile apps!
 As it gains popularity, and because it's a free-to-use managed service that requires no real efforts to setup, I had the chance to experiment with it and utilize it within a project I worked on in the build level of a CI.

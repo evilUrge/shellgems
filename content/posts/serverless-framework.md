@@ -1,38 +1,42 @@
 ---
 title: "Serverless Framework"
 date: 1533254400
-cover: serverless.png
 draft: false
 description: Serverless framework is awesome; but not quite ready.
+tags: ["serverless", "cloud", "deployment", "infrastructure", "development"]
+categories: ["Development"]
 ---
-> TLDR(אמ;לק) – Great potential; deploy microservices and API’s to a great number of serverless services (lambda;google func etc), but far from perfect.
 
-Age of the serverless – stop configure and “autoscale” manually every little service.
+![Serverless Framework](/img/serverless.png)
+
+> TLDR(אמ;לק) – Great potential; deploy microservices and API's to a great number of serverless services (lambda;google func etc), but far from perfect.
+
+Age of the serverless – stop configure and "autoscale" manually every little service.
 
 I like this mindset; as a devoted user of firebase with nodejsbased functions and an ex-Google app engine with Django rest.
 
 Using a platform SDK to deploy your own code could get addictive. There is something so satisfied deploying your own code to Firebase functions using [firebase-cli](https://www.npmjs.com/package/firebase-tools) or to Google functions with their [cloud SDK](https://cloud.google.com/sdk/).
 
-The main problem with all of these beautiful serverless services is that you’re pretty much locking yourself inside of a very specific realm.
+The main problem with all of these beautiful serverless services is that you're pretty much locking yourself inside of a very specific realm.
 
 Imagine having a tool like [Terraform](https://www.terraform.io/), but instead of creating a stack based on regular instances or even docker swarm of containers having a framework that can actually deploy your serverless service regardless of what managed platform you wanna use.
 
 Introducing: the serverless framework
 ===
 
-Recently it became a hot topic – as a great solution to deploy a service without binding yourself to just one service.
+Recently it became a hot topic – as a great solution to deploy a service without binding yourself to just one service.
 
-As much as it’s a brilliant idea; the implementation so far is far from great – in fact it feels like yet another not fully baked framework that trying to solve a need by just hacking around.
+As much as it's a brilliant idea; the implementation so far is far from great – in fact it feels like yet another not fully baked framework that trying to solve a need by just hacking around.
 
-Let’s dive into what I’m referring to as an unbacked service:
+Let's dive into what I'm referring to as an unbacked service:
 
 
 
-Let’s say I want to deploy my demo API to Google Functions:
+Let's say I want to deploy my demo API to Google Functions:
 Unbacked #1
 ---
 
-I still have to include in my project [serverless-google-cloudfunctions](https://www.npmjs.com/package/serverless-google-cloudfunctions) npm package – what’s the point of trying to create a generic approach to all serverless services if I still have to use a specific service package.
+I still have to include in my project [serverless-google-cloudfunctions](https://www.npmjs.com/package/serverless-google-cloudfunctions) npm package – what's the point of trying to create a generic approach to all serverless services if I still have to use a specific service package.
 
 
 Unbacked #2
@@ -80,15 +84,15 @@ Where is Firebase?
 
 Or better yet; where is the community?
 
-Of course, it’s an “opensource” service(not fully; ex having a dashboard is part of the paid subscription), meaning I can commit support for  Firebase func integration.
+Of course, it's an "opensource" service(not fully; ex having a dashboard is part of the paid subscription), meaning I can commit support for  Firebase func integration.
 
-But it feels like with the need to add “plugins” and having a manifest yml file that specify paths, there’s no real advantage using serverless YET.
+But it feels like with the need to add "plugins" and having a manifest yml file that specify paths, there's no real advantage using serverless YET.
 
 
 
 BTW; just for the heck of it
 
-in firebase, it’s enough that I’m having their server if I’m not on dev env, and firebase will register all of my routes(unlike in serverless)
+in firebase, it's enough that I'm having their server if I'm not on dev env, and firebase will register all of my routes(unlike in serverless)
 ```javascript
 const express = require('express');
 const bodyParser = require('body-parser');

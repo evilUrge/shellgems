@@ -1,10 +1,14 @@
 ---
 title: ".dev tld"
 date: 1551100548
-cover: devtld.png
 draft: false
 description: There's a new tld in town. but this time it's from Google.
+tags: ["domains", "Google", "TLD", "web development"]
+categories: ["Web Development"]
 ---
+
+![.dev TLD](/img/devtld.png)
+
 > From the 28 of February you can have your own .dev domain.
 
 I'll keep it short. Google started with the [early access program](https://support.google.com/domains/answer/9232417?hl=en#invalid) for the .dev tld.

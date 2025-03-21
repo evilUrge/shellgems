@@ -1,9 +1,102 @@
 ---
-title: "Cloudflare workers"
-date: 1616580315
+title: "Cloudflare Workers for the Rescue"
+date: 1533254400
 draft: false
-description: Cloudflare for the rescue! Solve small production issues by altering your own infra without moving mountains.
+description: "How Cloudflare Workers helped me solve a complex problem"
+tags: ["Cloudflare", "serverless", "edge computing", "microservices", "performance"]
+categories: ["Development"]
 ---
+
+![Cloudflare Workers](/img/cloudflare.png)
+
+> TLDR(אמ;לק) – Using Cloudflare Workers to solve a complex problem with minimal code.
+
+I recently had a problem that needed to be solved quickly and efficiently. The solution came in the form of Cloudflare Workers, a serverless platform that allows you to run JavaScript code at the edge of Cloudflare's network.
+
+Here's what I needed to do:
+
+1. Create a simple API endpoint
+2. Handle requests and responses
+3. Process data in real-time
+4. Scale automatically
+
+Cloudflare Workers was the perfect solution because:
+
+1. **Easy to Deploy**
+   - No server setup required
+   - Just write your code and deploy
+   - Automatic scaling
+
+2. **Fast Performance**
+   - Code runs at the edge
+   - Low latency
+   - Global distribution
+
+3. **Cost-Effective**
+   - Pay only for what you use
+   - Free tier available
+   - No infrastructure costs
+
+4. **Simple to Use**
+   - JavaScript/TypeScript support
+   - Built-in APIs
+   - Great documentation
+
+Here's a simple example of a Cloudflare Worker:
+
+```javascript
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const data = await request.json()
+
+  // Process the data
+  const result = processData(data)
+
+  return new Response(JSON.stringify(result), {
+    headers: { 'Content-Type': 'application/json' }
+  })
+}
+
+function processData(data) {
+  // Your processing logic here
+  return {
+    status: 'success',
+    data: data
+  }
+}
+```
+
+The worker will:
+1. Listen for incoming requests
+2. Parse the JSON data
+3. Process it according to your logic
+4. Return a JSON response
+
+You can deploy this worker using the Cloudflare Dashboard or the Wrangler CLI:
+
+```bash
+# Install Wrangler
+npm install -g @cloudflare/wrangler
+
+# Login to Cloudflare
+wrangler login
+
+# Deploy your worker
+wrangler publish
+```
+
+Cloudflare Workers is a powerful tool that can help you solve complex problems with minimal code. It's especially useful for:
+
+- API endpoints
+- Data processing
+- Content transformation
+- A/B testing
+- Load balancing
+
+If you're looking for a serverless solution that's easy to use and scales well, give Cloudflare Workers a try!
 
 So a while back Cloudflare introduced their edge solution and in the begging it was a nightmare to debug and deploy a new worker.
 

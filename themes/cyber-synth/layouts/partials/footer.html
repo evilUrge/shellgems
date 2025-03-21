@@ -1,0 +1,16 @@
+<div class="cyber-footer__inner">
+    <div class="cyber-footer__content">
+        <div class="cyber-footer__copyright">
+            {{ if .Site.Copyright }}
+                {{ .Site.Copyright | safeHTML }}
+            {{ else }}
+                &copy; {{ now.Format "2006" }} {{ if .Site.Author.name }} {{ .Site.Author.name }} {{ end }}
+            {{ end }}
+        </div>
+
+        <div class="cyber-footer__powered-by">
+            <span>Powered by </span>
+            <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+        </div>
+    </div>
+</div>
