@@ -1,0 +1,35 @@
+{
+  "name": "hugo-theme-analog-meets-digital",
+  "version": "2.0.0",
+  "description": "A sophisticated Hugo theme that bridges vintage analog aesthetics with modern digital design - featuring music-inspired elements, studio equipment styling, and professional typography",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hugo",
+    "hugo-theme",
+    "analog",
+    "digital",
+    "music",
+    "studio",
+    "vintage",
+    "professional",
+    "typography",
+    "vinyl",
+    "responsive",
+    "tech"
+  ],
+  "author": "Gilad Maoz (EvilUrge) <gilad@evilurge.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evilurge/hugo-theme-analog-meets-digital.git"
+  },
+  "homepage": "https://github.com/evilurge/hugo-theme-analog-meets-digital",
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0"
+  }
+}

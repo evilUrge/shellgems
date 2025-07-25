@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+
+    <!-- Professional Typography System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Core Stylesheets -->
+    {{ $mainCSS := resources.Get "css/main.css" }}
+    {{ if $mainCSS }}
+        {{ $mainCSS = $mainCSS | resources.Minify }}
+        <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}">
+    {{ end }}
+
+    <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}">
+
+    <!-- Professional Theme Colors -->
+    {{ if .Site.Params.themeColor }}
+        {{ $themeCSS := resources.Get (printf "css/themes/%s.css" .Site.Params.themeColor) }}
+        {{ if $themeCSS }}
+            {{ $themeCSS = $themeCSS | resources.Minify }}
+            <link rel="stylesheet" href="{{ $themeCSS.RelPermalink }}">
+        {{ end }}
+    {{ else }}
+        {{ $defaultThemeCSS := resources.Get "css/themes/warm-gold.css" }}
+        {{ if $defaultThemeCSS }}
+            {{ $defaultThemeCSS = $defaultThemeCSS | resources.Minify }}
+            <link rel="stylesheet" href="{{ $defaultThemeCSS.RelPermalink }}">
+        {{ end }}
+    {{ end }}
+
+    <!-- Professional Studio Mode -->
+    {{ if .Site.Params.studioMode }}
+        {{ $hackerCSS := resources.Get "css/hacker.css" }}
+        {{ if $hackerCSS }}
+            {{ $hackerCSS = $hackerCSS | resources.Minify }}
+            <link rel="stylesheet" href="{{ $hackerCSS.RelPermalink }}">
+        {{ end }}
+    {{ end }}
+
+    <!-- Layout Enhancements -->
+    {{ if .Site.Params.fullWidthTheme }}
+        {{ $fullWidthCSS := resources.Get "css/full-width.css" }}
+        {{ if $fullWidthCSS }}
+            {{ $fullWidthCSS = $fullWidthCSS | resources.Minify }}
+            <link rel="stylesheet" href="{{ $fullWidthCSS.RelPermalink }}">
+        {{ end }}
+    {{ end }}
+
+    {{ if .Site.Params.centerTheme }}
+        {{ $centerCSS := resources.Get "css/center.css" }}
+        {{ if $centerCSS }}
+            {{ $centerCSS = $centerCSS | resources.Minify }}
+            <link rel="stylesheet" href="{{ $centerCSS.RelPermalink }}">
+        {{ end }}
+    {{ end }}
+
+    <!-- Professional Meta Tags -->
+    <meta name="theme-color" content="#d69e2e">
+    <meta name="msapplication-TileColor" content="#1a1f2e">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ .Permalink }}">
+    <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+
+    {{ block "head" . }}{{ end }}
+</head>
+<body class="analog-body">
+    <div class="analog-grid">
+        <!-- Professional Studio Container -->
+        <div class="analog-studio-container">
+            <!-- Header with Music-Inspired Design -->
+            <header class="analog-header">
+                {{ partial "header.html" . }}
+            </header>
+
+            <!-- Main Content with Professional Layout -->
+            <main class="analog-main">
+                <div class="analog-container">
+                    {{ block "main" . }}{{ end }}
+                </div>
+            </main>
+
+            <!-- Footer with Studio Aesthetics -->
+            <footer class="analog-footer">
+                {{ partial "footer.html" . }}
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Professional JavaScript -->
+    <script src="{{ "js/prism.js" | relURL }}"></script>
+    {{ $mainJS := resources.Get "js/main.js" }}
+    {{ if $mainJS }}
+        {{ $mainJS = $mainJS | resources.Minify }}
+        <script src="{{ $mainJS.RelPermalink }}"></script>
+    {{ end }}
+
+    <!-- Studio Equipment JavaScript -->
+    {{ if .Site.Params.studioMode }}
+    <script>
+        // Professional studio mode enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add professional studio indicators
+            const indicators = document.querySelectorAll('.studio-indicator');
+            indicators.forEach((indicator, index) => {
+                setTimeout(() => {
+                    indicator.classList.add('active');
+                }, (index + 1) * 300);
+            });
+
+            // Professional scroll behavior
+            let ticking = false;
+            function updateScrollIndicator() {
+                const scrolled = window.scrollY;
+                const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollProgress = scrolled / maxHeight;
+
+                document.documentElement.style.setProperty('--scroll-progress', scrollProgress);
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateScrollIndicator);
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+    {{ end }}
+
+    <!-- Analytics and Performance -->
+    {{ if hugo.IsProduction }}
+        {{ with site.Config.Services.GoogleAnalytics.ID }}
+            {{ template "_internal/google_analytics.html" . }}
+        {{ end }}
+    {{ end }}
+
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

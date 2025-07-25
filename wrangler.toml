@@ -1,0 +1,44 @@
+name = "shell-gems"
+compatibility_date = "2024-01-01"
+
+[env.production]
+account_id = ""
+route = ""
+
+# Pages configuration
+[[env.production.services]]
+service = "shell-gems"
+environment = "production"
+
+# Build configuration for Hugo
+[build]
+command = "hugo --minify"
+cwd = ""
+watch_dir = "content"
+
+[build.environment_variables]
+HUGO_VERSION = "0.120.0"
+NODE_VERSION = "18"
+
+# Static files configuration
+[[rules]]
+type = "Text"
+globs = ["**/*.html", "**/*.txt"]
+compressed = true
+
+[[rules]]
+type = "Data"
+globs = ["**/*"]
+compressed = true
+
+# Headers configuration (migrated from firebase.json)
+[[headers]]
+for = "/*"
+[headers.values]
+Cache-Control = "max-age=960000"
+
+# Redirects and routing
+[[redirects]]
+from = "/posts/*"
+to = "/posts/:splat"
+status = 200

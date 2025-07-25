@@ -1,0 +1,97 @@
+<div class="analog-header__inner">
+    <!-- Professional Music-Inspired Logo -->
+    <div class="analog-logo">
+        <a href="{{ .Site.BaseURL }}" class="analog-logo__link">
+            <!-- Vinyl Record Icon -->
+            <div class="analog-logo__vinyl" aria-hidden="true">
+                <div class="vinyl-record"></div>
+            </div>
+
+            <!-- Professional Brand Text -->
+            <div class="analog-logo__brand">
+                <span class="analog-logo__text">{{ .Site.Params.logo.logoText | default .Site.Title }}</span>
+                {{ if .Site.Params.logo.tagline }}
+                <span class="analog-logo__tagline">{{ .Site.Params.logo.tagline }}</span>
+                {{ end }}
+            </div>
+
+            <!-- Studio Status Indicator -->
+            <div class="analog-logo__status" aria-hidden="true">
+                <div class="studio-indicator studio-indicator--live"></div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Professional Studio Navigation -->
+    <nav class="analog-nav" role="navigation" aria-label="Main navigation">
+        <input type="checkbox" id="analog-nav-toggle" class="analog-nav__toggle">
+        <label for="analog-nav-toggle" class="analog-nav__toggle-label" aria-label="Toggle navigation menu">
+            <span class="analog-nav__icon"></span>
+        </label>
+
+        <div class="analog-nav__menu-container">
+            <!-- Studio Equipment Rack Style Menu -->
+            <ul class="analog-nav__menu">
+                {{ range $index, $element := .Site.Menus.main }}
+                <li class="analog-nav__item" style="--item-index: {{ $index }};">
+                    <a href="{{ .URL }}" class="analog-nav__link" {{ if $element.Post }}data-description="{{ $element.Post }}"{{ end }}>
+                        <!-- Channel Indicator -->
+                        <span class="analog-nav__indicator" aria-hidden="true"></span>
+
+                        <!-- Menu Text -->
+                        <span class="analog-nav__text">{{ .Name }}</span>
+
+                        <!-- Studio VU Meter Style Accent -->
+                        <span class="analog-nav__accent" aria-hidden="true"></span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Professional Studio Controls and Theme Selector -->
+    <div style="display: flex; align-items: center; gap: var(--space-lg);">
+        <!-- Studio Controls -->
+        {{ if .Site.Params.studioMode }}
+        <div class="analog-nav__controls" aria-label="Studio controls">
+            <div class="studio-control studio-control--volume">
+                <div class="studio-knob"></div>
+                <label class="studio-control__label">Vol</label>
+            </div>
+            <div class="studio-control studio-control--eq">
+                <div class="level-indicator">
+                    <div class="level-indicator__led level-indicator__led--low"></div>
+                    <div class="level-indicator__led level-indicator__led--mid"></div>
+                    <div class="level-indicator__led level-indicator__led--high"></div>
+                </div>
+                <label class="studio-control__label">EQ</label>
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Professional Theme Selector -->
+        {{ if .Site.Params.showThemeSelector }}
+        <div class="analog-theme-selector" aria-label="Theme options">
+            <button class="analog-theme-button" data-theme="warm-gold" aria-label="Warm Gold Theme">
+                <span class="theme-indicator theme-indicator--gold"></span>
+            </button>
+            <button class="analog-theme-button" data-theme="deep-studio" aria-label="Deep Studio Theme">
+                <span class="theme-indicator theme-indicator--studio"></span>
+            </button>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+<!-- Professional Mobile Navigation Overlay -->
+<div class="analog-nav-overlay" aria-hidden="true"></div>
+
+<!-- Studio Equipment Rack Visual Enhancement -->
+{{ if .Site.Params.studioMode }}
+<div class="analog-header__rack" aria-hidden="true">
+    <div class="equipment-rack__led equipment-rack__led--power"></div>
+    <div class="equipment-rack__led equipment-rack__led--signal"></div>
+    <div class="equipment-rack__led equipment-rack__led--peak"></div>
+</div>
+{{ end }}

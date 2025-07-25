@@ -1,0 +1,12 @@
+name = "analog-meets-digital"
+license = "MIT"
+licenselink = "https://github.com/evilurge/hugo-theme-analog-meets-digital/blob/master/LICENSE"
+description = "A sophisticated Hugo theme that bridges vintage analog aesthetics with modern digital design - featuring music-inspired elements, studio equipment styling, and professional typography"
+homepage = "https://github.com/evilurge/hugo-theme-analog-meets-digital"
+tags = ["blog", "dark", "responsive", "modern", "analog", "digital", "music", "studio", "vintage", "professional", "tech", "typography"]
+features = ["blog", "responsive", "dual themes", "music-inspired design", "vinyl record animations", "studio controls", "professional typography", "syntax highlighting"]
+min_version = "0.41.0"
+
+[author]
+  name = "Gilad Maoz (EvilUrge)"
+  homepage = "https://github.com/evilurge"

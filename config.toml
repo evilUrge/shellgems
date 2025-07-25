@@ -1,7 +1,10 @@
 baseurl = "https://www.evilurge.com/"
 languageCode = "en-us"
-theme = "cyber-synth"
-paginate = 5
+theme = "analog-meets-digital"
+
+[pagination]
+  pagerSize = 12
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -9,11 +12,14 @@ paginate = 5
 
 [params]
   contentTypeName = "posts"
-  themeColor = "neon-purple"
-  hacker = true
+  themeColor = "warm-gold"
+  studioMode = true
   fullWidthTheme = false
   centerTheme = true
   description = "A tech blog about cloud, AI, and coding by Gilad Maoz"
+  showThemeSelector = true
+  showBuildInfo = true
+  themeVersion = "2.0"
 
 [languages]
   [languages.en]

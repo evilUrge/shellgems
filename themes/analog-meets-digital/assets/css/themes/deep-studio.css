@@ -1,0 +1,270 @@
+/*
+ * Analog Digital Theme - Deep Studio
+ * Professional deep studio color palette inspired by high-end recording equipment
+ */
+
+:root {
+  --color-bg: #0a0e13;
+  --color-bg-alt: #141922;
+  --color-bg-card: #1a2332;
+  --color-primary: #c6a96b;       /* Muted Gold */
+  --color-secondary: #b86f3f;     /* Deep Copper */
+  --color-accent: #d4af7a;        /* Light Bronze */
+  --color-text: #dde2e8;          /* Cool Light Gray */
+  --color-text-dim: rgba(221, 226, 232, 0.65);
+  --color-border: rgba(198, 169, 107, 0.15);
+  --color-article-title: #d4af7a;
+  --color-navy: #0f1825;          /* Deeper Navy */
+  --color-charcoal: #252a34;      /* Cool Charcoal */
+}
+
+/* Deep studio specific enhancements */
+body {
+  background: linear-gradient(135deg, var(--color-bg) 0%, #0d1218 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(198, 169, 107, 0.02) 50%,
+    transparent 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.analog-header, .cyber-header,
+.analog-footer, .cyber-footer {
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.analog-header::before, .cyber-header::before,
+.analog-footer::before, .cyber-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    rgba(198, 169, 107, 0.08) 0%,
+    rgba(212, 175, 122, 0.04) 50%,
+    rgba(184, 111, 63, 0.08) 100%);
+  z-index: -1;
+}
+
+/* Professional studio equipment styling */
+.analog-logo__link::before, .cyber-logo__cursor {
+  color: var(--color-primary);
+  text-shadow: 0 0 6px rgba(198, 169, 107, 0.3);
+  filter: drop-shadow(0 0 2px rgba(198, 169, 107, 0.2));
+}
+
+.analog-button, .cyber-button {
+  background: linear-gradient(135deg,
+    rgba(198, 169, 107, 0.1) 0%,
+    rgba(184, 111, 63, 0.05) 100%);
+  box-shadow:
+    0 0 6px rgba(198, 169, 107, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(198, 169, 107, 0.3);
+}
+
+.analog-button:hover, .cyber-button:hover {
+  background: linear-gradient(135deg,
+    rgba(212, 175, 122, 0.15) 0%,
+    rgba(198, 169, 107, 0.1) 100%);
+  box-shadow:
+    0 0 10px rgba(212, 175, 122, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Deep studio card effects */
+.analog-post-card, .cyber-post-card {
+  background: linear-gradient(135deg,
+    var(--color-bg-card) 0%,
+    rgba(26, 35, 50, 0.95) 100%);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(198, 169, 107, 0.1);
+}
+
+.analog-post-card:hover, .cyber-post-card:hover {
+  background: linear-gradient(135deg,
+    rgba(26, 35, 50, 1) 0%,
+    rgba(30, 39, 51, 0.98) 100%);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(198, 169, 107, 0.2),
+    0 0 20px rgba(198, 169, 107, 0.05);
+}
+
+.analog-article, .cyber-article {
+  background: linear-gradient(135deg,
+    var(--color-bg-card) 0%,
+    rgba(26, 35, 50, 0.98) 100%);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(198, 169, 107, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* Professional code blocks */
+pre {
+  background: linear-gradient(135deg,
+    var(--color-bg) 0%,
+    rgba(10, 14, 19, 0.95) 100%);
+  border: 1px solid rgba(198, 169, 107, 0.2);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(198, 169, 107, 0.08);
+}
+
+/* Deep studio navigation */
+.analog-nav__link:hover, .cyber-nav__link:hover {
+  background: linear-gradient(135deg,
+    rgba(198, 169, 107, 0.12) 0%,
+    rgba(184, 111, 63, 0.06) 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(198, 169, 107, 0.1),
+    0 0 8px rgba(198, 169, 107, 0.05);
+}
+
+/* Professional pagination */
+.analog-pagination__page--current, .cyber-pagination__page--current,
+.analog-pagination__page:hover, .cyber-pagination__page:hover {
+  background: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+  box-shadow:
+    0 2px 8px rgba(198, 169, 107, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Deep studio form elements */
+input, textarea {
+  background: linear-gradient(135deg,
+    var(--color-bg-card) 0%,
+    rgba(20, 25, 34, 0.95) 100%);
+  border: 1px solid rgba(198, 169, 107, 0.2);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 0 transparent;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 0 3px rgba(198, 169, 107, 0.12),
+    0 0 8px rgba(198, 169, 107, 0.15),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Deep studio table styling */
+table {
+  background: linear-gradient(135deg,
+    var(--color-bg-card) 0%,
+    rgba(26, 35, 50, 0.98) 100%);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(198, 169, 107, 0.1);
+}
+
+th {
+  background: linear-gradient(135deg,
+    rgba(198, 169, 107, 0.12) 0%,
+    rgba(184, 111, 63, 0.08) 100%);
+  border-bottom: 2px solid rgba(198, 169, 107, 0.3);
+}
+
+tr:hover td {
+  background: rgba(198, 169, 107, 0.04);
+}
+
+/* Professional link effects */
+a:hover {
+  text-shadow: 0 0 4px rgba(212, 175, 122, 0.3);
+}
+
+/* Deep studio blockquotes */
+blockquote {
+  background: linear-gradient(135deg,
+    rgba(198, 169, 107, 0.08) 0%,
+    rgba(184, 111, 63, 0.04) 100%);
+  border-left-color: var(--color-primary);
+  box-shadow:
+    0 2px 8px rgba(198, 169, 107, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+/* Professional selection colors */
+::selection {
+  background: rgba(198, 169, 107, 0.25);
+  color: var(--color-text);
+}
+
+::-moz-selection {
+  background: rgba(198, 169, 107, 0.25);
+  color: var(--color-text);
+}
+
+/* Deep studio scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg,
+    var(--color-accent) 0%,
+    var(--color-primary) 100%);
+}
+
+/* Professional studio ambient effects */
+.deep-studio-glow {
+  box-shadow:
+    0 0 24px rgba(198, 169, 107, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced typography for deep studio */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Deep studio specific animations */
+@keyframes deep-studio-pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.studio-indicator {
+  animation: deep-studio-pulse 4s ease-in-out infinite;
+}
