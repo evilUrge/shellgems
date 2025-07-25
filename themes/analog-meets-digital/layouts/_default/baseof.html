@@ -104,6 +104,74 @@
 
     </div>
 
+    <!-- Mermaid.js for Diagram Support -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid with professional theme colors matching the site
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: 'dark',
+                themeVariables: {
+                    primaryColor: '#d69e2e',
+                    primaryTextColor: '#ffffff',
+                    primaryBorderColor: '#dd6b20',
+                    lineColor: '#f6ad55',
+                    secondaryColor: '#1a1f2e',
+                    tertiaryColor: '#2d3748',
+                    background: '#1a1f2e',
+                    mainBkg: '#2d3748',
+                    secondBkg: '#1a1f2e',
+                    tertiaryBkg: '#4a5568'
+                },
+                flowchart: {
+                    htmlLabels: true,
+                    curve: 'basis'
+                },
+                sequence: {
+                    diagramMarginX: 50,
+                    diagramMarginY: 10,
+                    actorMargin: 50,
+                    width: 150,
+                    height: 65,
+                    boxMargin: 10,
+                    boxTextMargin: 5,
+                    noteMargin: 10,
+                    messageMargin: 35
+                }
+            });
+
+            // Find and convert only mermaid code blocks (be very specific)
+            const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+
+            mermaidBlocks.forEach((block, index) => {
+                // Double-check this is actually a mermaid block
+                if (block.className === 'language-mermaid' || block.classList.contains('language-mermaid')) {
+                    // Get the mermaid code content
+                    const mermaidCode = block.textContent || block.innerText;
+
+                    // Create a new div for the mermaid diagram
+                    const mermaidDiv = document.createElement('div');
+                    mermaidDiv.className = 'mermaid';
+                    mermaidDiv.textContent = mermaidCode;
+                    mermaidDiv.id = `mermaid-diagram-${index}`;
+
+                    // Replace the code block with the mermaid div
+                    const preElement = block.closest('pre');
+                    if (preElement) {
+                        preElement.parentNode.replaceChild(mermaidDiv, preElement);
+                    }
+                }
+            });
+
+            // Also look for any existing .mermaid divs and process them
+            const existingMermaidDivs = document.querySelectorAll('.mermaid');
+            if (existingMermaidDivs.length > 0) {
+                mermaid.init(undefined, existingMermaidDivs);
+            }
+        });
+    </script>
+
     <!-- Professional JavaScript -->
     <script src="{{ "js/prism.js" | relURL }}"></script>
     {{ $mainJS := resources.Get "js/main.js" }}

@@ -1458,3 +1458,176 @@ a:hover::after {
 .cyber-pagination__page--current { @extend .analog-pagination__page--current; }
 .cyber-pagination__prev { @extend .analog-pagination__prev; }
 .cyber-pagination__next { @extend .analog-pagination__next; }
+
+/* Professional Mermaid Diagram Styling */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-xl) 0;
+  background: var(--color-bg-card);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+  overflow-x: auto;
+}
+
+/* Mermaid diagram container enhancement */
+.mermaid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-warm);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Override mermaid's default styles to match theme */
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background: transparent !important;
+}
+
+/* Flowchart node styling */
+.mermaid .node rect {
+  fill: var(--color-bg-alt) !important;
+  stroke: var(--color-primary) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .node .label {
+  color: var(--color-text) !important;
+  font-family: var(--font-secondary) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+/* Flowchart edge styling */
+.mermaid .edgePath path {
+  stroke: var(--color-accent) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .edgeLabel {
+  background-color: var(--color-bg-card) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-secondary) !important;
+  font-size: 12px !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--border-radius-sm) !important;
+  padding: 4px 8px !important;
+}
+
+/* Arrowhead styling */
+.mermaid .arrowheadPath {
+  fill: var(--color-accent) !important;
+  stroke: var(--color-accent) !important;
+}
+
+/* Sequence diagram styling */
+.mermaid .actor {
+  fill: var(--color-bg-alt) !important;
+  stroke: var(--color-primary) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .actor-line {
+  stroke: var(--color-border) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 5,5 !important;
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke: var(--color-accent) !important;
+  stroke-width: 2px !important;
+}
+
+.mermaid .messageText {
+  fill: var(--color-text) !important;
+  font-family: var(--font-secondary) !important;
+  font-size: 13px !important;
+}
+
+/* Graph diagram styling */
+.mermaid .cluster rect {
+  fill: rgba(214, 158, 46, 0.1) !important;
+  stroke: var(--color-primary) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 5,5 !important;
+}
+
+.mermaid .cluster .label {
+  color: var(--color-primary) !important;
+  font-family: var(--font-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* Subgraph styling */
+.mermaid .cluster .cluster-label {
+  color: var(--color-primary) !important;
+  font-family: var(--font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+/* Responsive mermaid diagrams */
+@media screen and (max-width: 768px) {
+  .mermaid {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    overflow-x: scroll;
+  }
+
+  .mermaid svg {
+    min-width: 600px;
+  }
+
+  .mermaid .node .label {
+    font-size: 12px !important;
+  }
+
+  .mermaid .messageText {
+    font-size: 11px !important;
+  }
+}
+
+/* Dark theme specific adjustments */
+body.theme-deep-studio .mermaid .node rect {
+  fill: var(--color-bg-alt) !important;
+  stroke: var(--color-primary) !important;
+}
+
+body.theme-deep-studio .mermaid .edgePath path {
+  stroke: var(--color-accent) !important;
+}
+
+/* Professional loading state for mermaid */
+.mermaid-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background: var(--color-bg-card);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  margin: var(--space-xl) 0;
+  position: relative;
+}
+
+.mermaid-loading::after {
+  content: 'Loading diagram...';
+  color: var(--color-text-dim);
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
