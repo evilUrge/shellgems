@@ -1,0 +1,22 @@
+{
+    "name": "ShellGems - Analog Meets Digital",
+    "short_name": "ShellGems",
+    "description": "A sophisticated blog featuring music-inspired design, technical content, and professional development insights.",
+    "icons": [
+        {
+            "src": "/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#d69e2e",
+    "background_color": "#1a1f2e",
+    "display": "standalone",
+    "start_url": "/",
+    "orientation": "portrait"
+}
