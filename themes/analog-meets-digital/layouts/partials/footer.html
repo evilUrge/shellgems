@@ -1,216 +1,56 @@
-<div class="analog-footer__inner">
-    <!-- Professional Studio Footer Content -->
-    <div class="analog-footer__content">
-        <!-- Studio Equipment Rack Style Layout -->
-        <div class="analog-footer__rack">
+<footer class="analog-footer">
+    <div class="analog-container">
+        <div class="analog-footer__grid">
 
-            <!-- Copyright and Brand Information -->
-            <div class="analog-footer__section analog-footer__section--brand">
-                <div class="analog-footer__logo">
-                    <div class="vinyl-record vinyl-record--small" aria-hidden="true"></div>
-                    <div class="analog-footer__brand-text">
-                        {{ if .Site.Params.logo.logoText }}
-                            {{ .Site.Params.logo.logoText }}
-                        {{ else }}
-                            {{ .Site.Title }}
-                        {{ end }}
-                    </div>
+            <!-- Col 1: Brand -->
+            <div class="analog-footer__brand-col">
+                <div class="analog-logo">
+                    <div class="analog-logo__mark"></div>
+                    <span class="analog-logo__text text-lg">{{ .Site.Title }}</span>
                 </div>
+                <p>
+                    Bridging the gap between analog warmth and digital precision.
+                    A personal blog about technology, music, and the art of engineering.
+                </p>
+            </div>
 
-                <div class="analog-footer__copyright">
-                    {{ if .Site.Copyright }}
-                        {{ .Site.Copyright | safeHTML }}
-                    {{ else }}
-                        &copy; {{ now.Format "2006" }} {{ if .Site.Author.name }}{{ .Site.Author.name }}{{ end }}
+            <!-- Col 2: Navigation -->
+            <div>
+                <h4 class="analog-footer__heading">Signal Path</h4>
+                <ul class="analog-footer__links">
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL }}" class="analog-footer__link">{{ .Name }}</a></li>
                     {{ end }}
-                </div>
+                </ul>
             </div>
 
-            <!-- Professional Links Section -->
-            <div class="analog-footer__section analog-footer__section--links">
-                {{ if .Site.Menus.footer }}
-                <nav class="analog-footer__nav" aria-label="Footer navigation">
-                    <ul class="analog-footer__menu">
-                        {{ range .Site.Menus.footer }}
-                        <li class="analog-footer__menu-item">
-                            <a href="{{ .URL }}" class="analog-footer__link">
-                                <span class="analog-footer__link-indicator" aria-hidden="true"></span>
-                                {{ .Name }}
-                            </a>
-                        </li>
-                        {{ end }}
-                    </ul>
-                </nav>
-                {{ end }}
+            <!-- Col 3: Social -->
+            <div>
+                <h4 class="analog-footer__heading">Input / Output</h4>
+                <ul class="analog-footer__links">
+                    <li><a href="#" class="analog-footer__link">GitHub</a></li>
+                    <li><a href="#" class="analog-footer__link">LinkedIn</a></li>
+                    <li><a href="#" class="analog-footer__link">Twitter</a></li>
+                    <li><a href="{{ .Site.BaseURL }}index.xml" class="analog-footer__link">RSS Feed</a></li>
+                </ul>
             </div>
 
-            <!-- Social Media / Contact Section -->
-            <div class="analog-footer__section analog-footer__section--social">
-                {{ if .Site.Params.social }}
-                <div class="analog-footer__social">
-                    <div class="analog-footer__social-title">Connect</div>
-                    <div class="analog-footer__social-links">
-                        {{ range .Site.Params.social }}
-                        <a href="{{ .url }}" class="analog-footer__social-link"
-                           target="_blank" rel="noopener" aria-label="{{ .name }}">
-                            <span class="social-indicator" aria-hidden="true"></span>
-                            {{ .name }}
-                        </a>
-                        {{ end }}
-                    </div>
-                </div>
-                {{ end }}
+            <!-- Col 4: Specs -->
+            <div>
+                <h4 class="analog-footer__heading">Specifications</h4>
+                <ul class="analog-footer__links font-tech text-sm text-muted">
+                    <li>Freq: 20Hz - 20kHz</li>
+                    <li>THD: < 0.001%</li>
+                    <li>S/N Ratio: 110dB</li>
+                    <li>Class A Operation</li>
+                </ul>
             </div>
 
-            <!-- Technical Information -->
-            <div class="analog-footer__section analog-footer__section--tech">
-                <div class="analog-footer__tech-info">
-                    <div class="analog-footer__powered-by">
-                        <span class="tech-indicator" aria-hidden="true">⚡</span>
-                        <span>Powered by </span>
-                        <a href="https://gohugo.io/" target="_blank" rel="noopener" class="tech-link">Hugo</a>
-                    </div>
-
-                    {{ if .Site.Params.showBuildInfo }}
-                    <div class="analog-footer__build-info">
-                        <span class="build-indicator" aria-hidden="true">●</span>
-                        <span>Built: {{ now.Format "2006-01-02 15:04 MST" }}</span>
-                    </div>
-                    {{ end }}
-                </div>
-            </div>
         </div>
 
-        <!-- Professional Studio Controls Footer -->
-        {{ if .Site.Params.studioMode }}
-        <div class="analog-footer__studio-controls" aria-hidden="true">
-            <div class="studio-footer-rack">
-                <!-- Studio Indicators -->
-                <div class="studio-footer-section">
-                    <div class="vu-meter vu-meter--footer">
-                        <div class="vu-meter__bar"></div>
-                        <div class="vu-meter__bar vu-meter__bar--active"></div>
-                        <div class="vu-meter__bar vu-meter__bar--active"></div>
-                        <div class="vu-meter__bar"></div>
-                        <div class="vu-meter__bar"></div>
-                    </div>
-                    <label class="studio-footer-label">Output</label>
-                </div>
-
-                <!-- Studio Status -->
-                <div class="studio-footer-section">
-                    <div class="studio-status-panel">
-                        <div class="status-led status-led--power"></div>
-                        <div class="status-led status-led--ready"></div>
-                        <div class="status-led status-led--signal"></div>
-                    </div>
-                    <label class="studio-footer-label">Status</label>
-                </div>
-
-                <!-- Equipment Info -->
-                <div class="studio-footer-section">
-                    <div class="equipment-info">
-                        <div class="equipment-model">Analog Digital v{{ .Site.Params.themeVersion | default "1.0" }}</div>
-                        <div class="equipment-serial">{{ substr (md5 .Site.BaseURL) 0 8 | upper }}</div>
-                    </div>
-                </div>
-            </div>
+        <div class="analog-footer__bottom">
+            <span>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</span>
+            <span>Designed with <span class="text-gold">♥</span> & Hugo</span>
         </div>
-        {{ end }}
-    </div>
-
-    <!-- Professional Ambient Background -->
-    <div class="analog-footer__ambient" aria-hidden="true">
-        <div class="ambient-particle"></div>
-        <div class="ambient-particle"></div>
-        <div class="ambient-particle"></div>
-    </div>
-</div>
-
-<!-- Additional Professional Studio CSS -->
-<style>
-/* Professional Footer Enhancements */
-.analog-footer__rack {
-    display: grid;
-    grid-template-columns: 1fr auto auto auto;
-    gap: var(--space-lg);
-    align-items: start;
-}
-
-.analog-footer__section--brand {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-}
-
-.analog-footer__logo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
-.vinyl-record--small {
-    width: 24px;
-    height: 24px;
-    animation: vinyl-spin 6s linear infinite;
-}
-
-.analog-footer__brand-text {
-    font-family: var(--font-primary);
-    font-weight: 600;
-    color: var(--color-primary);
-    font-size: 1.1rem;
-}
-
-.analog-footer__copyright {
-    font-size: 0.85rem;
-    color: var(--color-text-dim);
-}
-
-.analog-footer__menu {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    list-style: none;
-}
-
-.analog-footer__link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: 0.9rem;
-    color: var(--color-text-dim);
-    transition: color var(--animation-speed) var(--animation-ease);
-}
-
-.analog-footer__link:hover {
-    color: var(--color-primary);
-}
-
-.analog-footer__link-indicator {
-    width: 4px;
-    height: 4px;
-    background: var(--color-secondary);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity var(--animation-speed) var(--animation-ease);
-}
-
-.analog-footer__link:hover .analog-footer__link-indicator {
-    opacity: 1;
-}
-
-@media screen and (max-width: 768px) {
-    .analog-footer__rack {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-        text-align: center;
-    }
-
-    .analog-footer__menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-</style>
+        </div>
+</footer>

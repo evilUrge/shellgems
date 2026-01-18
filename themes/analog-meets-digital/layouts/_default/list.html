@@ -1,58 +1,90 @@
 {{ define "main" }}
-<div class="cyber-container">
+<div class="analog-container">
+
+    {{ if .IsHome }}
+    <section class="analog-hero">
+        <div class="analog-hero__content">
+            <h1 class="analog-hero__title">
+                Analog Soul.<br>
+                <span class="text-gold">Digital Precision.</span>
+            </h1>
+            <p class="analog-hero__subtitle">
+                Exploring the intersection of software engineering, music production, and design.
+            </p>
+            <div class="analog-hero__actions">
+                <a href="#latest-posts" class="analog-button analog-button--primary">Explore the Studio</a>
+                <a href="/about" class="analog-button analog-button--ghost">Signal Path</a>
+            </div>
+        </div>
+        <div class="analog-hero__visual">
+            <!-- CSS-only Turntable/Abstract Visual -->
+            <div class="analog-visual-circle">
+                <div class="analog-visual-label-content">
+                    <div class="analog-label-ring"></div>
+                    <div class="analog-label-text analog-label-top">{{ .Site.Title }}</div>
+                    <div class="analog-label-text analog-label-bottom">High Fidelity</div>
+                    <div class="analog-label-text analog-label-left">Side A</div>
+                    <div class="analog-label-text analog-label-right">33 RPM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="latest-posts" class="analog-section-header">
+        <h2 class="analog-section-title">Latest Recordings</h2>
+        <div class="analog-section-line"></div>
+    </div>
+    {{ end }}
+
     {{ if .Content }}
-    <div class="cyber-content">
+    <div class="analog-content">
         {{ .Content }}
     </div>
     {{ end }}
 
-    <div class="cyber-posts vinyl-collection">
+    <div class="analog-posts-grid">
         {{ range .Paginator.Pages }}
-        <a href="{{ .Permalink }}" class="cyber-post-card-link">
-            <article class="cyber-post-card">
-                <div class="cyber-post-card__inner">
-                    <div class="cyber-post-card__header">
-                        <h2 class="cyber-post-card__title">
-                            {{ .Title }}
-                        </h2>
+        <article class="analog-card">
+            {{ if .Params.cover }}
+            <a href="{{ .Permalink }}">
+                <img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="analog-card__image">
+            </a>
+            {{ end }}
 
-                        <div class="cyber-post-card__meta">
-                            <time class="cyber-post-card__date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                                {{ .Date.Format "January 2, 2006" }}
-                            </time>
-
-                            {{ if .Params.tags }}
-                            <div class="cyber-post-card__tags">
-                                {{ range .Params.tags }}
-                                <span class="cyber-tag">{{ . }}</span>
-                                {{ end }}
-                            </div>
+            <div class="analog-card__content">
+                <header>
+                    <div class="analog-card__meta">
+                        <time datetime="{{ .Date.Format " 2006-01-02T15:04:05Z07:00" }}">
+                            {{ .Date.Format "Jan 2, 2006" }}
+                        </time>
+                        {{ if .Params.tags }}
+                            <span>•</span>
+                            {{ range first 2 .Params.tags }}
+                            <span class="analog-tag" style="border: none; padding: 0;">{{ . }}</span>
                             {{ end }}
-                        </div>
-                    </div>
-
-                    {{ if .Params.cover }}
-                    <div class="cyber-post-card__cover">
-                        <img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="cyber-post-card__image">
-                    </div>
-                    {{ end }}
-
-                    <div class="cyber-post-card__summary">
-                        {{ if .Description }}
-                            {{ .Description }}
-                        {{ else }}
-                            {{ .Summary }}
                         {{ end }}
                     </div>
 
-                    <div class="cyber-post-card__footer">
-                        <span class="cyber-button">
-                            {{ if .Site.Params.readMore }}{{ .Site.Params.readMore }}{{ else }}Read{{ end }}
-                        </span>
-                    </div>
+                    <a href="{{ .Permalink }}" style="text-decoration: none;">
+                        <h2 class="analog-card__title">{{ .Title }}</h2>
+                    </a>
+                    </header>
+
+                <div class="analog-card__summary">
+                    {{ if .Description }}
+                        {{ .Description | truncate 150 }}
+                        {{ else }}
+                        {{ .Summary | truncate 150 }}
+                        {{ end }}
+                        </div>
+
+                <div class="analog-card__footer">
+                    <a href="{{ .Permalink }}" class="analog-card__link">
+                        Read Article
+                    </a>
                 </div>
-            </article>
-        </a>
+                </div>
+                </article>
         {{ end }}
     </div>
 

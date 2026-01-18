@@ -21,7 +21,8 @@
 
     <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}">
 
-    <!-- Professional Theme Colors -->
+    <!-- Themes (Disabled for Redesign - Main.css handles everything) -->
+    {{/* 
     {{ if .Site.Params.themeColor }}
         {{ $themeCSS := resources.Get (printf "css/themes/%s.css" .Site.Params.themeColor) }}
         {{ if $themeCSS }}
@@ -35,6 +36,7 @@
             <link rel="stylesheet" href="{{ $defaultThemeCSS.RelPermalink }}">
         {{ end }}
     {{ end }}
+    */}}
 
     <!-- Professional Studio Mode -->
     {{ if .Site.Params.studioMode }}
