@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}">
 
     <!-- Themes (Disabled for Redesign - Main.css handles everything) -->
-    {{/* 
+    {{/*
     {{ if .Site.Params.themeColor }}
         {{ $themeCSS := resources.Get (printf "css/themes/%s.css" .Site.Params.themeColor) }}
         {{ if $themeCSS }}
@@ -38,7 +38,8 @@
     {{ end }}
     */}}
 
-    <!-- Professional Studio Mode -->
+    <!-- Professional Studio Mode (Disabled for Redesign) -->
+    {{/*
     {{ if .Site.Params.studioMode }}
         {{ $hackerCSS := resources.Get "css/hacker.css" }}
         {{ if $hackerCSS }}
@@ -46,8 +47,10 @@
             <link rel="stylesheet" href="{{ $hackerCSS.RelPermalink }}">
         {{ end }}
     {{ end }}
+    */}}
 
-    <!-- Layout Enhancements -->
+    <!-- Layout Enhancements (Disabled for Redesign) -->
+    {{/*
     {{ if .Site.Params.fullWidthTheme }}
         {{ $fullWidthCSS := resources.Get "css/full-width.css" }}
         {{ if $fullWidthCSS }}
@@ -63,6 +66,7 @@
             <link rel="stylesheet" href="{{ $centerCSS.RelPermalink }}">
         {{ end }}
     {{ end }}
+    */}}
 
     <!-- Professional Meta Tags -->
     <meta name="theme-color" content="#d69e2e">
