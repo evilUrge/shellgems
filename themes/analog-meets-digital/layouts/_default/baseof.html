@@ -6,8 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
-    <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags "
-        , " }}{{ else }}{{ if .Site.Params.keywords }}{{ delimit .Site.Params.keywords " , " }}{{ end }}{{ end }}">
+    {{ $keywordsList := slice }}
+    {{ if .Params.tags }}
+        {{ if reflect.IsSlice .Params.tags }}
+            {{ $keywordsList = .Params.tags }}
+        {{ else }}
+            {{ $keywordsList = (slice .Params.tags) }}
+        {{ end }}
+    {{ else if .Site.Params.keywords }}
+        {{ if reflect.IsSlice .Site.Params.keywords }}
+            {{ $keywordsList = .Site.Params.keywords }}
+        {{ else }}
+            {{ $keywordsList = (slice .Site.Params.keywords) }}
+        {{ end }}
+    {{ end }}
+    {{ if gt (len $keywordsList) 0 }}
+    <meta name="keywords" content="{{ delimit $keywordsList ", " }}">
+    {{ end }}
     <link rel="canonical" href="{{ .Permalink }}">
 
     <!-- Professional Typography System -->
@@ -90,18 +105,57 @@
     <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description | default "ShellGems - Analog Meets Digital. A sophisticated blog featuring music-inspired design, technical content, and professional development insights." }}{{ else }}{{ .Description | default .Summary | truncate 160 | plainify }}{{ end }}">
 
-    <!-- Open Graph Images -->
-    {{ $ogImage := "" }}
+    {{ $pageImageCandidate := "" }}
     {{ if .Params.cover }}
-        {{ $ogImage = .Params.cover | absURL }}
+        {{ $pageImageCandidate = .Params.cover }}
+    {{ else if .Params.featured_image }}
+        {{ $pageImageCandidate = .Params.featured_image }}
+    {{ else if .Params.featuredImage }}
+        {{ $pageImageCandidate = .Params.featuredImage }}
+    {{ else if .Params.image }}
+        {{ $pageImageCandidate = .Params.image }}
+    {{ else if .Params.images }}
+        {{ if reflect.IsSlice .Params.images }}
+            {{ $pageImageCandidate = (index .Params.images 0) }}
+        {{ else }}
+            {{ $pageImageCandidate = .Params.images }}
+        {{ end }}
     {{ else if and .Site.Params.logo (not (reflect.IsMap .Site.Params.logo)) }}
-        {{ $ogImage = .Site.Params.logo | absURL }}
+        {{ $pageImageCandidate = .Site.Params.logo }}
     {{ else }}
-        {{ $ogImage = "img/og-image.svg" | absURL }}
+        {{ $pageImageCandidate = "img/favicon.png" }}
     {{ end }}
-    <meta property="og:image" content="{{ $ogImage }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    {{ $pageImage := "" }}
+    {{ if or (hasPrefix $pageImageCandidate "http://") (hasPrefix $pageImageCandidate "https://") }}
+        {{ $pageImage = $pageImageCandidate }}
+    {{ else }}
+        {{ $pageImagePath := $pageImageCandidate }}
+        {{ if not (hasPrefix $pageImagePath "/") }}
+            {{ $pageImagePath = printf "/%s" $pageImagePath }}
+        {{ end }}
+        {{ $staticPath := printf "static%s" $pageImagePath }}
+        {{ if not (fileExists $staticPath) }}
+            {{ if hasPrefix $pageImagePath "/images/" }}
+                {{ $altPath := replace $pageImagePath "/images/" "/img/" }}
+                {{ if fileExists (printf "static%s" $altPath) }}
+                    {{ $pageImagePath = $altPath }}
+                {{ else }}
+                    {{ $pageImagePath = "/img/favicon.png" }}
+                {{ end }}
+            {{ else }}
+                {{ $pageImagePath = "/img/favicon.png" }}
+            {{ end }}
+        {{ end }}
+        {{ $pageImage = $pageImagePath | absURL }}
+    {{ end }}
+    {{ $pageImageType := "image/jpeg" }}
+    {{ $pageImageExt := lower (path.Ext $pageImage) }}
+    {{ if eq $pageImageExt ".png" }}{{ $pageImageType = "image/png" }}{{ end }}
+    {{ if eq $pageImageExt ".webp" }}{{ $pageImageType = "image/webp" }}{{ end }}
+    {{ if eq $pageImageExt ".gif" }}{{ $pageImageType = "image/gif" }}{{ end }}
+    <meta property="og:image" content="{{ $pageImage }}">
+    <meta property="og:image:secure_url" content="{{ $pageImage }}">
+    <meta property="og:image:type" content="{{ $pageImageType }}">
     <meta property="og:image:alt" content="{{ if .IsHome }}{{ .Site.Title }} - Analog Meets Digital{{ else }}{{ .Title }}{{ end }}">
 
     <!-- Open Graph Locale and Additional Data -->
@@ -130,16 +184,7 @@
     <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta name="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.description | default "ShellGems - Analog Meets Digital. A sophisticated blog featuring music-inspired design, technical content, and professional development insights." }}{{ else }}{{ .Description | default .Summary | truncate 160 | plainify }}{{ end }}">
 
-    <!-- Twitter Images -->
-    {{ $twitterImage := "" }}
-    {{ if .Params.cover }}
-        {{ $twitterImage = .Params.cover | absURL }}
-    {{ else if and .Site.Params.logo (not (reflect.IsMap .Site.Params.logo)) }}
-        {{ $twitterImage = .Site.Params.logo | absURL }}
-    {{ else }}
-        {{ $twitterImage = "img/og-image.png" | absURL }}
-    {{ end }}
-    <meta name="twitter:image" content="{{ $twitterImage }}">
+    <meta name="twitter:image" content="{{ $pageImage }}">
     <meta name="twitter:image:alt" content="{{ if .IsHome }}{{ .Site.Title }} - Analog Meets Digital Logo{{ else }}{{ .Title }}{{ end }}">
 
     <!-- Additional SEO Meta Tags -->
@@ -168,21 +213,21 @@
             "name": "{{ .Site.Author.name | default "ShellGems" }}"
         },
         {{ end }}
+        {{ $publisherLogo := "img/favicon.png" | absURL }}
+        {{ if and .Site.Params.logo (not (reflect.IsMap .Site.Params.logo)) }}
+            {{ $publisherLogo = .Site.Params.logo | absURL }}
+        {{ end }}
         "publisher": {
             "@type": "Organization",
             "name": "{{ .Site.Title }}",
             "logo": {
                 "@type": "ImageObject",
-                "url": "{{ "img/og-image.png" | absURL }}",
-                "width": 1200,
-                "height": 630
+                "url": "{{ $publisherLogo }}"
             }
         },
         "image": {
             "@type": "ImageObject",
-            "url": "{{ $ogImage }}",
-            "width": 1200,
-            "height": 630
+            "url": "{{ $pageImage }}"
         }
     }
     </script>
