@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
+    <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags "
+        , " }}{{ else }}{{ if .Site.Params.keywords }}{{ delimit .Site.Params.keywords " , " }}{{ end }}{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
 
     <!-- Professional Typography System -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,7 +97,7 @@
     {{ else if and .Site.Params.logo (not (reflect.IsMap .Site.Params.logo)) }}
         {{ $ogImage = .Site.Params.logo | absURL }}
     {{ else }}
-        {{ $ogImage = "img/og-image.png" | absURL }}
+        {{ $ogImage = "img/og-image.svg" | absURL }}
     {{ end }}
     <meta property="og:image" content="{{ $ogImage }}">
     <meta property="og:image:width" content="1200">
